@@ -35,7 +35,7 @@ zeno serve -p 3000
 
 ```bash
 # create new blog
-npx zeno init mysite
+npx zeno-blog init mysite
 cd mysite
 
 # build blog
