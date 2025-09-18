@@ -1,0 +1,42 @@
+{
+  "name": "zeno",
+  "version": "1.0.0",
+  "description": "Zeno — Blazing fast blogs for everyone",
+  "main": "./bin/zeno.js",
+  "bin": {
+    "zeno": "./bin/zeno.js"
+  },
+  "scripts": {
+    "dev": "node ./bin/zeno.js serve",
+    "build": "node ./bin/zeno.js build",
+    "init": "node ./bin/zeno.js init"
+  },
+  "keywords": ["blog", "markdown", "plugin", "static site", "zeno"],
+  "author": "mine3krish",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mine3krish/zeno.git"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "plugins/",
+    "themes/",
+    "posts/",
+    "index.js",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "express": "^5.1.0",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.0"
+  }
+}

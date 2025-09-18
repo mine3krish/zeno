@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{post_title}} - {{title}}</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="{{excerpt}}">
+</head>
+<body class="post-page">
+  %navbar%
+  
+  <main class="post-main">
+    <article class="post-article">
+      <header class="post-header">
+        <div class="post-meta">
+          <time class="post-date" datetime="{{date}}">{{date}}</time>
+          <span class="post-reading-time">5 min read</span>
+        </div>
+        <h1 class="post-title">{{post_title}}</h1>
+        <div class="post-accent"></div>
+      </header>
+      
+      <div class="post-content">
+        {{content}}
+      </div>
+      
+      <footer class="post-footer">
+        <div class="post-tags">
+          <span class="tag">Blog</span>
+          <span class="tag">Writing</span>
+        </div>
+        <div class="post-share">
+          <span>Share this post</span>
+          <button class="share-btn" onclick="copyToClipboard()">Copy Link</button>
+        </div>
+      </footer>
+    </article>
+    
+    <nav class="post-navigation">
+      <a href="/" class="nav-home">← Back to all posts</a>
+    </nav>
+  </main>
+  
+  %footer%
+  %toggle%
+  
+  <script>
+    function copyToClipboard() {
+      navigator.clipboard.writeText(window.location.href);
+      const btn = document.querySelector('.share-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy Link', 2000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "title": "Krish's Blog",
+  "theme": "default",
+  "plugins": [
+    { "name": "toc" }
+  ]
+}
