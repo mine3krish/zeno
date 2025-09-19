@@ -1,43 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { pathToFileURL } from 'url';
 import matter from 'gray-matter';
 import MarkdownIt from 'markdown-it';
 import { config } from './config.js';
-
-async function loadPlugins() {
-  const plugins = [];
-  for (const p of config.plugins || []) {
-    const pluginPath = path.join(process.cwd(), 'plugins', `${p.name}.js`);
-    if (fs.existsSync(pluginPath)) {
-      const mod = await import(pathToFileURL(pluginPath).href);
-      plugins.push(mod.default(p.options || {}));
-    } else {
-      console.warn(`⚠️ Plugin "${p.name}" not found at ${pluginPath}`);
-    }
-  }
-  return plugins;
-}
-
-function slugify(title) {
-  return title
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
-}
-
-function htmlToText(html) {
-  return html
-    .replace(/<[^>]+>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
+import { loadPlugins, slugify, htmlToText } from './utils/builderUtils.js';
 
 export async function build() {
-    const plugins = await loadPlugins();
+    const plugins = await loadPlugins(config);
 
     const postsDir = path.join(process.cwd(), 'posts');
     const themeDir = path.join(process.cwd(), 'themes', config.theme || 'default');
