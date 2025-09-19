@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What is Zeno? - Krish's Blog</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <nav class="navbar">
+  <a href="/index.html" class="logo">Krish's Blog</a>
+  <ul class="menu">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+</nav>
+
+
+  <article class="post-full">
+    <h1>What is Zeno?</h1>
+    <p class="date">Fri Sep 19 2025 05:30:00 GMT+0530 (India Standard Time)</p>
+    <div class="content"><h2>Table of Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#why-zeno?">Why Zeno?</a></li>
+<li><a href="#core-features">Core Features</a></li>
+<li><a href="#example-plugins">Example Plugins</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+</ul>
+<h3>Introduction <a id="introduction"></a></h3>
+<p>Zeno is a <strong>plugin-first Markdown → Blog framework</strong> built with JavaScript. It’s designed to make blogging fast, hackable, and flexible for developers. You can write your posts in Markdown, apply themes, extend functionality with plugins, and publish your blog with a single command.</p>
+<h3>Why Zeno? <a id="why-zeno?"></a></h3>
+<p>Many blogging frameworks are either heavy, complicated, or hard to customize. Zeno solves these problems by being:</p>
+<ul>
+<li><strong>Lightweight</strong>: Minimal setup, minimal dependencies.</li>
+<li><strong>Plugin-First</strong>: Add or remove functionality easily.</li>
+<li><strong>Markdown-Based</strong>: Focus on writing content, not dealing with complex HTML templates.</li>
+<li><strong>Theme-Friendly</strong>: Build or switch themes easily.</li>
+<li><strong>CLI-Powered</strong>: Manage your blog from the terminal.</li>
+</ul>
+<h3>Core Features <a id="core-features"></a></h3>
+<h4>Markdown to HTML</h4>
+<p>Write posts in simple <code>.md</code> files with frontmatter (like <code>title</code> and <code>date</code>) and let Zeno automatically convert them to beautiful HTML.</p>
+<h4>Themes</h4>
+<p>Zeno uses <strong>folder-based themes</strong>, so you can include files like:</p>
+<ul>
+<li><code>index.html</code></li>
+<li><code>post.html</code></li>
+<li><code>style.css</code></li>
+</ul>
+<p>You can also create reusable <strong>components</strong> such as <code>navbar.html</code> or <code>posts.html</code> that get injected dynamically.</p>
+<h4>Plugins</h4>
+<p>Extend Zeno’s functionality using hooks like:</p>
+<ul>
+<li><code>onMarkdownParse</code> – Modify Markdown before rendering.</li>
+<li><code>onRenderHTML</code> – Modify HTML after rendering.</li>
+<li><code>onPostBuild</code> – Run custom actions after the build is done.</li>
+</ul>
+<h4>CLI Commands</h4>
+<p>Zeno comes with a simple CLI:</p>
+<pre><code class="language-bash">npx zeno init mysite   # initialize a new blog
+zeno build             # build the blog
+zeno serve -p 3000     # serve locally
+</code></pre>
+<h3>Example Plugins <a id="example-plugins"></a></h3>
+<ul>
+<li>TOC Plugin – Automatically generate a Table of Contents from headings.</li>
+</ul>
+<h3>Getting Started <a id="getting-started"></a></h3>
+<ol>
+<li>Initialize a new blog:</li>
+</ol>
+<pre><code class="language-bash">npx zeno init mysite
+cd mysite
+</code></pre>
+<ol start="2">
+<li>Add posts in the posts/ folder.</li>
+<li>Run <code>zeno build</code> to generate your blog in /dist.</li>
+<li>Serve it locally with <code>zeno serve</code>.</li>
+</ol>
+</div>
+    <a href="/index.html" class="back-link">← Back to Home</a>
+  </article>
+
+  <footer class="footer">
+  <hr>
+  <p>Powered by Zeno 🚀</p>
+</footer>
+</body>
+</html>

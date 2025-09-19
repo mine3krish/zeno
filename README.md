@@ -15,7 +15,7 @@ cd mysite
 zeno build
 
 # Start the development server
-zeno serve -p 3000
+zeno serve 3000
 ```
 
 ---
@@ -42,7 +42,7 @@ cd mysite
 zeno build
 
 # start local dev server
-zeno serve -p 3000
+zeno serve 3000
 ```
 
 ---

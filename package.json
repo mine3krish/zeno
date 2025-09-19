@@ -1,6 +1,6 @@
 {
   "name": "zeno-blog",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Zeno — Blazing fast blogs for everyone",
   "main": "./bin/zeno.js",
   "bin": {
