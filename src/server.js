@@ -7,12 +7,20 @@ export function serve(port = 3000) {
   const app = express();
   const distPath = path.join(process.cwd(), 'dist');
 
-  build();
+  try {
+    build();
+  } catch (err) {
+    console.error('❌ Error during rebuild:', err);
+  }
 
   const watcher = chokidar.watch(['posts', 'themes'], { ignoreInitial: true });
   watcher.on('all', (event, pathChanged) => {
     console.log(`🔄 ${event} detected in ${pathChanged}, rebuilding...`);
-    build();
+    try {
+      build();
+    } catch (err) {
+      console.error('❌ Error during rebuild:', err);
+    }
   });
 
   app.use(express.static(distPath));

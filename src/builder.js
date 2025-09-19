@@ -64,6 +64,10 @@ export async function build() {
         const content = fs.readFileSync(filePath, 'utf-8');
         const { data, content: markdown } = matter(content);
 
+        if (!data.title) {
+          return console.warn(`⚠️ Post "${file}" is missing a title in its front matter.`);
+        }
+
         let processedMarkdown = markdown;
         for (const plugin of plugins) {
             if (plugin.onMarkdownParse) {
@@ -78,7 +82,7 @@ export async function build() {
           .replace(/{{post_title}}/g, data.title || '')
           .replace(/{{date}}/g, data.date || '')
           .replace(/{{excerpt}}/g, htmlToText(html).slice(0, 200) + '...')
-          .replace(/{{slug}}/g, slugify(data.title));
+          .replace(/{{slug}}/g, slugify(data.title || ''));
 
         for (const plugin of plugins) {
           if (plugin.onRenderHTML) {
@@ -101,7 +105,7 @@ export async function build() {
             }
         }
 
-        const slug = slugify(data.title);
+        const slug = slugify(data.title || '');
         const postDir = path.join(postsOutputDir, slug);
         if (!fs.existsSync(postDir)) fs.mkdirSync(postDir, { recursive: true });
         fs.writeFileSync(path.join(postDir, 'index.html'), postFullTemplate);
