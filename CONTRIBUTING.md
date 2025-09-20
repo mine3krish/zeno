@@ -33,7 +33,7 @@ npm install
 npm run build
 
 # Serve locally
-npm run serve
+npm run dev
 ```
 
 ### 5. Commit and Push
