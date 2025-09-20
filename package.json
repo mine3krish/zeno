@@ -1,6 +1,6 @@
 {
   "name": "zeno-blog",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Zeno — Blazing fast blogs for everyone",
   "main": "./bin/zeno.js",
   "bin": {
@@ -22,16 +22,16 @@
   "files": [
     "bin/",
     "src/",
-    "plugins/",
     "themes/",
-    "posts/",
-    "index.js",
     "package.json",
     "README.md",
     "LICENSE"
   ],
   "engines": {
     "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "chokidar": "^4.0.3",
