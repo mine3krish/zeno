@@ -4,14 +4,16 @@
 ## 📑 Table of Contents
 
 - [✨ Features](#-features)
+- [🎯 MVP Goal](#-mvp-goal)
 - [🚀 Quick Start](#-quick-start)
 - [📂 Project Structure](#-project-structure)
 - [🖼 Example](#-example)
 - [⚙️ Configuration](#️-configuration)
 - [🛣 Roadmap](#-roadmap)
 - [🤝 Contributing](#-contributing)
+- [⚡ Plugin Hooks (Developers)](#-plugin-hooks-developers)
 - [📜 License](#-license)
-- [🙌 Acknowledgements](#-acknowledgements)
+
 <hr>
 
 ### ✨ Features
@@ -22,6 +24,16 @@
 - ✅ ⚡ Hot Reload for instant previews
 - ✅ 📦 Static Export for deployment (Netlify, Vercel, GitHub Pages)
 - ✅ 🌍 Beginner-friendly open source project
+
+<hr>
+
+### 🎯 MVP Goal
+Deliver a fast, hackable blogging framework where developers can:
+- 📝 Write in Markdown
+- 🎨 Apply themes
+- ⚡ Extend with plugins
+- 🏷️ Add tags to posts
+- 🚀 Publish with one command
 
 <hr>
 
@@ -46,6 +58,7 @@ Open 👉 http://localhost:3000
 <hr>
 
 ### 📂 Project Structure
+
 ```
 zeno/
 ├── bin/
@@ -62,6 +75,7 @@ zeno/
 └── posts/
     └── first-post.md
 ```
+<hr> 
 
 ### 🖼 Example 
 
@@ -113,4 +127,23 @@ themes/default/
 - 3. Commit and push your changes 
 - 4. Submit a pull request 
 
-[![Contributing](https://img.shields.io/badge/Contributing-Guidelines-blue)](CONTRIBUTING.md) for details.
+[![Contributing](https://img.shields.io/badge/Contributing-Guidelines-blue)](CONTRIBUTING.md) 
+
+<hr>
+
+### ⚡ Plugin Hooks (Developers)
+Zeno provides plugin hooks so developers can extend functionality:
+- onMarkdownParse(markdown, frontmatter) — Modify Markdown before rendering.
+- onRenderHTML(html, frontmatter) — Modify HTML after rendering.
+- onPostBuild(distDir) — Hook after the blog is built.
+
+<hr>
+
+### 📜 License
+Zeno is licensed under the MIT License - see [LICENSE](LICENSE)
+
+<hr>
+<hr>
+
+## 🔥 Start blogging the easy way with Zeno today!
+<p align="center"> <a href="#">⬆️ Back to Top</a> </p>
