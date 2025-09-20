@@ -8,11 +8,11 @@ import { loadPlugins, slugify, htmlToText } from './utils/builderUtils.js';
 export async function build() {
     const plugins = await loadPlugins(config);
 
-    const postsDir = path.join(process.cwd(), 'posts');
+    const postsDir = path.join(process.cwd(), config.postDir || 'posts');
     const themeDir = path.join(process.cwd(), 'themes', config.theme || 'default');
-    const componentsDir = path.join(themeDir, 'components');
-    const outputDir = path.join(process.cwd(), 'dist');
-    const postsOutputDir = path.join(outputDir, 'post');
+    const componentsDir = path.join(themeDir, config.componentsDir || 'components');
+    const outputDir = path.join(process.cwd(), config.outputDir || 'dist');
+    const postsOutputDir = path.join(outputDir, config.postDir || 'post');
 
     if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
     if (!fs.existsSync(postsOutputDir)) fs.mkdirSync(postsOutputDir, { recursive: true });
@@ -104,5 +104,5 @@ export async function build() {
     }
 
 
-    console.log('✅ Blog built successfully, preview with "zeno serve"');
+    console.log('✅ Blog built successfully');
 }
