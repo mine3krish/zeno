@@ -16,9 +16,9 @@
 
 ### ✨ Features
 
-✅ Write posts in Markdown
-✅ Zero Config – start instantly
-✅ 🎨 Custom Themes (minimal, modern, dark, etc.)
-✅ ⚡ Hot Reload for instant previews
-✅ 📦 Static Export for deployment (Netlify, Vercel, GitHub Pages)
-✅ 🌍 Beginner-friendly open source project
+- ✅ Write posts in Markdown
+- ✅ Zero Config – start instantly
+- ✅ 🎨 Custom Themes (minimal, modern, dark, etc.)
+- ✅ ⚡ Hot Reload for instant previews
+- ✅ 📦 Static Export for deployment (Netlify, Vercel, GitHub Pages)
+- ✅ 🌍 Beginner-friendly open source project
