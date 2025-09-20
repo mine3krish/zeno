@@ -4,14 +4,14 @@
 📑 Table of Contents
 <li>
 <ul> ✨ Features </ul>
-<ul> 🚀 Quick Start</ul> 
-<ul> 📂 Project Structure</ul> 
-<ul> 🖼 Example</ul> 
-<ul> ⚙️ Configuration</ul> 
-<ul> 🛣 Roadmap</ul> 
-<ul> 🤝 Contributing</ul> 
-<ul> 📜 License</ul> 
-<ul> 🙌 Acknowledgements</ul> 
+<ul> 🚀 Quick Start </ul> 
+<ul> 📂 Project Structure </ul> 
+<ul> 🖼 Example </ul> 
+<ul> ⚙️ Configuration </ul> 
+<ul> 🛣 Roadmap </ul> 
+<ul> 🤝 Contributing </ul> 
+<ul> 📜 License </ul> 
+<ul> 🙌 Acknowledgements </ul> 
 </li>
 
 <h3>✨ Features</h3>
