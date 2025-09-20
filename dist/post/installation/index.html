@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zeno Docs - Documentation</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Installation - Zeno Docs</title>
+  <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
 </head>
-<body class="docs-home">
+<body class="docs-post">
   <nav class="docs-navbar">
   <div class="navbar-container">
     <div class="navbar-brand">
@@ -67,157 +67,121 @@
 </aside>
     
     <main class="docs-main">
-      <div class="hero-section">
-        <div class="hero-badge">
-          <span class="badge-icon">🚀</span>
-          <span>Documentation</span>
-        </div>
-        <h1 class="hero-title">Zeno Docs</h1>
-        <p class="hero-subtitle">Blazing fast blogs for everyone</p>
-        <p class="hero-description">
-          A lightweight, plugin-first Markdown → Blog framework built with JavaScript. 
-          Simple, hackable, and extendable.
-        </p>
-        
-        <div class="hero-actions">
-          <a href="/post/introduction-to-zeno/" class="btn btn-primary">
-            <span>Get Started</span>
-            <span class="btn-icon">→</span>
-          </a>
-          <a href="https://github.com/mine3krish/zeno" class="btn btn-secondary">
-            <span class="btn-icon">⭐</span>
-            <span>Star on GitHub</span>
-          </a>
-        </div>
-        
-        <div class="hero-code">
-          <div class="code-header">
-            <div class="code-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <span class="code-title">Quick Start</span>
+      <article class="docs-article">
+        <div class="article-header">
+          <div class="breadcrumb">
+            <a href="/">Documentation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span>Installation</span>
           </div>
-          <pre class="code-block"><code class="language-bash"># Create a new blog
-npx zeno-blog init mysite
-cd mysite
+          
+          <h1 class="article-title">Installation</h1>
+          
+          <div class="article-meta">
+            <time class="article-date">2025-09-19</time>
+            <div class="article-tags">
+              <span class="tag">Guide</span>
+              <span class="tag">Tutorial</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="article-content">
+          <h2>Table of Contents</h2>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#quick-install">Quick Install</a></li>
+<li><a href="#alternative-methods">Alternative Methods</a></li>
+<li><a href="#platform-setup">Platform Setup</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+<h1>Installation</h1>
+<h3>Prerequisites <a id="prerequisites"></a></h3>
+<ul>
+<li><strong>Node.js</strong> 16+</li>
+<li><strong>npm</strong> 7+</li>
+</ul>
+<p>Check your versions:</p>
+<pre><code class="language-bash">node --version
+npm --version
+</code></pre>
+<h3>Quick Install <a id="quick-install"></a></h3>
+<pre><code class="language-bash"># Create a new blog
+npx zeno-blog init my-blog
+cd my-blog
+
+# Install dependencies
+npm install
 
 # Build and serve
 zeno build
-zeno serve 3000</code></pre>
+zeno serve
+</code></pre>
+<p>Your blog is now running at <code>http://localhost:3000</code>! 🎉</p>
+<h3>Alternative Methods <a id="alternative-methods"></a></h3>
+<h3>Global Installation</h3>
+<pre><code class="language-bash"># Install globally
+npm install -g zeno-blog
+
+# Create blog
+zeno init my-blog
+cd my-blog
+npm install
+</code></pre>
+<h3>From Source</h3>
+<pre><code class="language-bash"># Clone and setup
+git clone https://github.com/mine3krish/zeno
+cd zeno-blog
+npm install
+npm link
+</code></pre>
+<h3>Platform Setup <a id="platform-setup"></a></h3>
+<h3>Windows</h3>
+<pre><code class="language-cmd"># Install Node.js from nodejs.org
+# Then run:
+npx zeno-blog init my-blog
+</code></pre>
+<h3>macOS</h3>
+<pre><code class="language-bash"># Using Homebrew
+brew install node
+npx zeno-blog init my-blog
+</code></pre>
+<h3>Linux</h3>
+<pre><code class="language-bash"># Ubuntu/Debian
+sudo apt install nodejs npm
+npx zeno-blog init my-blog
+
+# Using nvm (recommended)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install --lts
+npx zeno-blog init my-blog
+</code></pre>
+<h3>Troubleshooting <a id="troubleshooting"></a></h3>
+<h3>Permission Issues</h3>
+<pre><code class="language-bash"># Fix npm permissions (macOS/Linux)
+sudo chown -R $(whoami) ~/.npm
+</code></pre>
+<h3>Node Version Issues</h3>
+<pre><code class="language-bash"># Update Node.js
+npm install -g n
+n latest
+</code></pre>
+<h3>Path Issues</h3>
+<pre><code class="language-bash"># Add to PATH (Linux/macOS)
+echo 'export PATH=$PATH:~/.npm-global/bin' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+
         </div>
-      </div>
-      
-      <section class="features-section">
-        <h2>Core Features</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">📝</div>
-            <h3>Markdown to HTML</h3>
-            <p>Write posts in plain .md files with frontmatter support</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3>Themes</h3>
-            <p>Simple folder-based themes with components</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🔌</div>
-            <h3>Plugins</h3>
-            <p>Extend with hooks: onMarkdownParse, onRenderHTML, onPostBuild</p>
+          
+          <div class="article-actions">
+            <a href="https://github.com/mine3krish/zeno/" class="edit-page">
+              <span class="edit-icon">✏️</span>
+              Edit this page
+            </a>
           </div>
         </div>
-      </section>
-      
-      <section class="docs-grid">
-        <h2>Documentation</h2>
-        <div class="docs-cards">
-          <div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/configuration/" class="card-link">Configuration</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Basic Configuration All Options Configuration Reference Common Examples Plugin Configuration Validation Quick Tips Configuration Zeno uses a single zeno.config.json file to configure...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/configuration/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/installation/" class="card-link">Installation</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Prerequisites Quick Install Alternative Methods Platform Setup Troubleshooting Installation Prerequisites Node.js 16+ npm 7+ Check your versions: node --version npm --version Quick I...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/installation/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/introduction-to-zeno/" class="card-link">Introduction to Zeno</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents What is Zeno? Why Choose Zeno? How Zeno Works Core Philosophy What Makes Zeno Different? Quick Example Plugin Example Who Is Zeno For? Getting Started Community &amp; Support What's ...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/introduction-to-zeno/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/markdown/" class="card-link">Markdown</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Basic Post Structure Section Heading Frontmatter Markdown Syntax H2 Heading File Organization Post Examples Installation Your First Post Configuration Methods Content Tips File Proce...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/markdown/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/plugins/" class="card-link">Plugins</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Using Plugins Built-in Plugins Plugin Hooks Creating Plugins Quick Examples Plugin Data Plugin Options Plugin Tips Plugins Plugins extend Zeno's functionality through simple hooks. A...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/plugins/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/themes/" class="card-link">Themes</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Using Themes Built-in Themes Theme Structure Templates Placeholders Components Creating a Theme Theme Tips Themes Themes control how your blog looks. Simple folder-based system with ...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/themes/" class="card-arrow">→</a>
-  </div>
-</div>
-        </div>
-      </section>
+      </article>
     </main>
   </div>
   
@@ -257,6 +221,59 @@ zeno serve 3000</code></pre>
     </div>
   </div>
 </footer>
+  
+  <script>
+    // Generate table of contents
+    document.addEventListener('DOMContentLoaded', function() {
+      addCopyButtons();
+      setupScrollSpy();
+    });
+    
+    function addCopyButtons() {
+      const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+      codeBlocks.forEach(block => {
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.innerHTML = '📋 Copy';
+        button.addEventListener('click', () => {
+          navigator.clipboard.writeText(block.querySelector('code').textContent);
+          button.innerHTML = '✅ Copied!';
+          setTimeout(() => button.innerHTML = '📋 Copy', 2000);
+        });
+        
+        block.style.position = 'relative';
+        block.appendChild(button);
+      });
+    }
+    
+    function setupScrollSpy() {
+      const links = document.querySelectorAll('.toc-link');
+      const sections = Array.from(links).map(link => 
+        document.querySelector(link.getAttribute('href'))
+      ).filter(Boolean);
+      
+      function updateActiveLink() {
+        const scrollTop = window.scrollY + 100;
+        
+        let current = '';
+        sections.forEach(section => {
+          if (section.offsetTop <= scrollTop) {
+            current = section.id;
+          }
+        });
+        
+        links.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink();
+    }
+  </script>
   <script>
 // Theme toggle
 function toggleTheme() {

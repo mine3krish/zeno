@@ -1,6 +1,6 @@
 {
-  "title": "Krish's Blog",
-  "theme": "clazzy",
+  "title": "Zeno Docs",
+  "theme": "docs",
   "plugins": [
     { "name": "toc" }
   ]

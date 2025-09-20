@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Themes - Zeno Docs</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+</head>
+<body class="docs-post">
+  <nav class="docs-navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a href="/" class="brand-link">
+        <span class="brand-icon">🚀</span>
+        <span class="brand-text">Zeno Docs</span>
+      </a>
+    </div>
+    
+    <div class="navbar-actions">
+      <a href="https://github.com/mine3krish/zeno" class="nav-link">
+        <span class="link-icon">⭐</span>
+        <span>GitHub</span>
+      </a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+  
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3>Documentation</h3>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+      <span class="toggle-icon">×</span>
+    </button>
+  </div>
+  
+  <nav class="sidebar-nav">
+    <div class="nav-section">
+      <h4 class="nav-section-title">Getting Started</h4>
+      <ul class="nav-list">
+        <li><a href="/post/introduction-to-zeno/" class="nav-item">Introduction</a></li>
+        <li><a href="/post/installation/" class="nav-item">Installation</a></li>
+      </ul>
+    </div>
+    
+    <div class="nav-section">
+      <h4 class="nav-section-title">Core Concepts</h4>
+      <ul class="nav-list">
+        <li><a href="/post/configuration/" class="nav-item">Configuration</a></li>
+        <li><a href="/post/themes" class="nav-item">Themes</a></li>
+        <li><a href="/post/plugins" class="nav-item">Plugins</a></li>
+        <li><a href="/post/markdown" class="nav-item">Markdown</a></li>
+      </ul>
+    </div>
+  </nav>
+</aside>
+    
+    <main class="docs-main">
+      <article class="docs-article">
+        <div class="article-header">
+          <div class="breadcrumb">
+            <a href="/">Documentation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span>Themes</span>
+          </div>
+          
+          <h1 class="article-title">Themes</h1>
+          
+          <div class="article-meta">
+            <time class="article-date">2024-09-19</time>
+            <div class="article-tags">
+              <span class="tag">Guide</span>
+              <span class="tag">Tutorial</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="article-content">
+          <h2>Table of Contents</h2>
+<ul>
+<li><a href="#using-themes">Using Themes</a></li>
+<li><a href="#built-in-themes">Built-in Themes</a></li>
+<li><a href="#theme-structure">Theme Structure</a></li>
+<li><a href="#templates">Templates</a></li>
+<li><a href="#placeholders">Placeholders</a></li>
+<li><a href="#components">Components</a></li>
+<li><a href="#creating-a-theme">Creating a Theme</a></li>
+<li><a href="#theme-tips">Theme Tips</a></li>
+</ul>
+<h1>Themes</h1>
+<p>Themes control how your blog looks. Simple folder-based system with HTML templates and CSS.</p>
+<h3>Using Themes <a id="using-themes"></a></h3>
+<p>Set theme in <code>zeno.config.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;title&quot;: &quot;My Blog&quot;,
+  &quot;theme&quot;: &quot;classy&quot;
+}
+</code></pre>
+<p>Build and your theme is applied automatically.</p>
+<h3>Built-in Themes <a id="built-in-themes"></a></h3>
+<h3><strong>default</strong></h3>
+<p>Clean, minimal theme for blogs</p>
+<pre><code class="language-json">{ &quot;theme&quot;: &quot;default&quot; }
+</code></pre>
+<h3><strong>classy</strong></h3>
+<p>Modern, elegant theme with dark mode</p>
+<pre><code class="language-json">{ &quot;theme&quot;: &quot;classy&quot; }
+</code></pre>
+<h3><strong>docs</strong></h3>
+<p>Documentation-focused with sidebar and TOC</p>
+<pre><code class="language-json">{ &quot;theme&quot;: &quot;docs&quot; }
+</code></pre>
+<h3>Theme Structure <a id="theme-structure"></a></h3>
+<pre><code>themes/my-theme/
+├── index.html       # Homepage template
+├── post.html        # Single post template
+├── style.css        # Theme styles
+└── components/      # Reusable parts
+    ├── navbar.html
+    ├── footer.html
+    └── posts.html
+</code></pre>
+<h3>Templates <a id="templates"></a></h3>
+<h3>Homepage (<code>index.html</code>)</h3>
+<pre><code class="language-js">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;{{title}}&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  %navbar%
+  &lt;main&gt;
+    %posts%
+  &lt;/main&gt;
+  %footer%
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3>Post Page (<code>post.html</code>)</h3>
+<pre><code class="language-js">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;{{post_title}} - {{title}}&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;../style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  %navbar%
+  &lt;article&gt;
+    &lt;h1&gt;{{post_title}}&lt;/h1&gt;
+    &lt;time&gt;{{date}}&lt;/time&gt;
+    &lt;div class=&quot;content&quot;&gt;
+      {{content}}
+    &lt;/div&gt;
+  &lt;/article&gt;
+  %footer%
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3>Placeholders <a id="placeholders"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Description</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{{title}}</code></td>
+<td>Site title</td>
+<td>Any template</td>
+</tr>
+<tr>
+<td><code>{{post_title}}</code></td>
+<td>Post title</td>
+<td>Post template</td>
+</tr>
+<tr>
+<td><code>{{date}}</code></td>
+<td>Post date</td>
+<td>Post template</td>
+</tr>
+<tr>
+<td><code>{{content}}</code></td>
+<td>Post HTML</td>
+<td>Post template</td>
+</tr>
+<tr>
+<td><code>{{excerpt}}</code></td>
+<td>Post preview</td>
+<td>Posts component</td>
+</tr>
+<tr>
+<td><code>{{slug}}</code></td>
+<td>Post URL slug</td>
+<td>Posts component</td>
+</tr>
+</tbody>
+</table>
+<h3>Components <a id="components"></a></h3>
+<p>Components are reusable HTML snippets:</p>
+<h3>Posts List (<code>components/posts.html</code>)</h3>
+<pre><code class="language-js">&lt;article class=&quot;post-preview&quot;&gt;
+  &lt;h2&gt;&lt;a href=&quot;/post/{{slug}}&quot;&gt;{{post_title}}&lt;/a&gt;&lt;/h2&gt;
+  &lt;time&gt;{{date}}&lt;/time&gt;
+  &lt;p&gt;{{excerpt}}&lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+<h3>Navigation (<code>components/navbar.html</code>)</h3>
+<pre><code class="language-js">&lt;nav&gt;
+  &lt;a href=&quot;/&quot;&gt;{{title}}&lt;/a&gt;
+  &lt;div class=&quot;nav-links&quot;&gt;
+    &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
+    &lt;a href=&quot;/about.html&quot;&gt;About&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+<p>Use components with <code>%component-name%</code>:</p>
+<pre><code class="language-html">%navbar%    &lt;!-- Includes navbar.html --&gt;
+%posts%     &lt;!-- Includes posts.html --&gt;
+%footer%    &lt;!-- Includes footer.html --&gt;
+</code></pre>
+<h3>Creating a Theme <a id="creating-a-theme"></a></h3>
+<ol>
+<li><strong>Create theme folder:</strong></li>
+</ol>
+<pre><code class="language-bash">mkdir themes/my-theme
+</code></pre>
+<ol start="2">
+<li><strong>Add required files:</strong></li>
+</ol>
+<pre><code class="language-bash">themes/my-theme/
+├── index.html
+├── post.html
+└── style.css
+</code></pre>
+<ol start="3">
+<li><strong>Use in config:</strong></li>
+</ol>
+<pre><code class="language-json">{ &quot;theme&quot;: &quot;my-theme&quot; }
+</code></pre>
+<ol start="4">
+<li><strong>Build and test:</strong></li>
+</ol>
+<pre><code class="language-bash">zeno build
+zeno serve
+</code></pre>
+<h3>Theme Tips <a id="theme-tips"></a></h3>
+<ul>
+<li><strong>Start simple</strong> - Copy <code>default</code> theme and modify</li>
+<li><strong>Test locally</strong> - Use <code>zeno serve</code> for live preview</li>
+<li><strong>Mobile first</strong> - Design for small screens</li>
+<li><strong>Use components</strong> - Keep templates DRY</li>
+<li><strong>CSS in style.css</strong> - Keep styles organized</li>
+</ul>
+
+        </div>
+          
+          <div class="article-actions">
+            <a href="https://github.com/mine3krish/zeno/" class="edit-page">
+              <span class="edit-icon">✏️</span>
+              Edit this page
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+  
+  <footer class="docs-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Zeno Docs</h4>
+        <p>Blazing fast blogs for everyone</p>
+        <div class="footer-links">
+          <a href="https://github.com/mine3krish/zeno" class="footer-link">GitHub</a>
+          <a href="https://npmjs.com/package/zeno-blog" class="footer-link">npm</a>
+          <!-- <a href="/changelog.html" class="footer-link">Changelog</a> -->
+        </div>
+      </div>
+      
+      <!-- <div class="footer-section">
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="/examples.html" class="footer-link">Examples</a>
+          <a href="/templates.html" class="footer-link">Templates</a>
+          <a href="/community.html" class="footer-link">Community</a>
+        </div>
+      </div>
+       -->
+
+      <div class="footer-section">
+        <h4>Support</h4>
+        <div class="footer-links">
+          <a href="https://github.com/mine3krish/zeno/issues" class="footer-link">Report Issues</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Built with ❤️ and Zeno.</p>
+    </div>
+  </div>
+</footer>
+  
+  <script>
+    // Generate table of contents
+    document.addEventListener('DOMContentLoaded', function() {
+      addCopyButtons();
+      setupScrollSpy();
+    });
+    
+    function addCopyButtons() {
+      const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+      codeBlocks.forEach(block => {
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.innerHTML = '📋 Copy';
+        button.addEventListener('click', () => {
+          navigator.clipboard.writeText(block.querySelector('code').textContent);
+          button.innerHTML = '✅ Copied!';
+          setTimeout(() => button.innerHTML = '📋 Copy', 2000);
+        });
+        
+        block.style.position = 'relative';
+        block.appendChild(button);
+      });
+    }
+    
+    function setupScrollSpy() {
+      const links = document.querySelectorAll('.toc-link');
+      const sections = Array.from(links).map(link => 
+        document.querySelector(link.getAttribute('href'))
+      ).filter(Boolean);
+      
+      function updateActiveLink() {
+        const scrollTop = window.scrollY + 100;
+        
+        let current = '';
+        sections.forEach(section => {
+          if (section.offsetTop <= scrollTop) {
+            current = section.id;
+          }
+        });
+        
+        links.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink();
+    }
+  </script>
+  <script>
+// Theme toggle
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+// Sidebar toggle
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
+
+// Initialize theme and other functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+  
+  // Setup search functionality
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      
+      if (query.length > 2) {
+        // Mock search results - replace with actual search implementation
+        const mockResults = [
+          { title: 'Getting Started', url: '/getting-started.html' },
+          { title: 'Configuration', url: '/configuration.html' },
+          { title: 'Themes', url: '/themes.html' },
+          { title: 'Plugins', url: '/plugins.html' }
+        ].filter(item => item.title.toLowerCase().includes(query));
+        
+        if (mockResults.length > 0) {
+          searchResults.innerHTML = mockResults.map(result => 
+            `<a href="${result.url}" class="search-result-item">${result.title}</a>`
+          ).join('');
+          searchResults.style.display = 'block';
+        } else {
+          searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+          searchResults.style.display = 'block';
+        }
+      } else {
+        searchResults.style.display = 'none';
+      }
+    });
+    
+    // Hide search results when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+      }
+    });
+  }
+  
+  // Set active navigation item
+  const currentPath = window.location.pathname;
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    if (item.getAttribute('href') === currentPath) {
+      item.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>

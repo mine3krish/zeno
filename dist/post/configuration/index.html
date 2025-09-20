@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zeno Docs - Documentation</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Configuration - Zeno Docs</title>
+  <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
 </head>
-<body class="docs-home">
+<body class="docs-post">
   <nav class="docs-navbar">
   <div class="navbar-container">
     <div class="navbar-brand">
@@ -67,157 +67,157 @@
 </aside>
     
     <main class="docs-main">
-      <div class="hero-section">
-        <div class="hero-badge">
-          <span class="badge-icon">🚀</span>
-          <span>Documentation</span>
-        </div>
-        <h1 class="hero-title">Zeno Docs</h1>
-        <p class="hero-subtitle">Blazing fast blogs for everyone</p>
-        <p class="hero-description">
-          A lightweight, plugin-first Markdown → Blog framework built with JavaScript. 
-          Simple, hackable, and extendable.
-        </p>
-        
-        <div class="hero-actions">
-          <a href="/post/introduction-to-zeno/" class="btn btn-primary">
-            <span>Get Started</span>
-            <span class="btn-icon">→</span>
-          </a>
-          <a href="https://github.com/mine3krish/zeno" class="btn btn-secondary">
-            <span class="btn-icon">⭐</span>
-            <span>Star on GitHub</span>
-          </a>
-        </div>
-        
-        <div class="hero-code">
-          <div class="code-header">
-            <div class="code-dots">
-              <span></span><span></span><span></span>
+      <article class="docs-article">
+        <div class="article-header">
+          <div class="breadcrumb">
+            <a href="/">Documentation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span>Configuration</span>
+          </div>
+          
+          <h1 class="article-title">Configuration</h1>
+          
+          <div class="article-meta">
+            <time class="article-date">2024-09-19</time>
+            <div class="article-tags">
+              <span class="tag">Guide</span>
+              <span class="tag">Tutorial</span>
             </div>
-            <span class="code-title">Quick Start</span>
           </div>
-          <pre class="code-block"><code class="language-bash"># Create a new blog
-npx zeno-blog init mysite
-cd mysite
+        </div>
+        
+        <div class="article-content">
+          <h2>Table of Contents</h2>
+<ul>
+<li><a href="#basic-configuration">Basic Configuration</a></li>
+<li><a href="#all-options">All Options</a></li>
+<li><a href="#configuration-reference">Configuration Reference</a></li>
+<li><a href="#common-examples">Common Examples</a></li>
+<li><a href="#plugin-configuration">Plugin Configuration</a></li>
+<li><a href="#validation">Validation</a></li>
+<li><a href="#quick-tips">Quick Tips</a></li>
+</ul>
+<h1>Configuration</h1>
+<p>Zeno uses a single <code>zeno.config.json</code> file to configure your entire blog. Simple and straightforward.</p>
+<h3>Basic Configuration <a id="basic-configuration"></a></h3>
+<p>Create <code>zeno.config.json</code> in your project root:</p>
+<pre><code class="language-json">{
+  &quot;title&quot;: &quot;My Blog&quot;,
+  &quot;theme&quot;: &quot;default&quot;,
+  &quot;plugins&quot;: []
+}
+</code></pre>
+<p>That's it! Your blog is ready to build.</p>
+<h3>All Options <a id="all-options"></a></h3>
+<pre><code class="language-json">{
+  &quot;title&quot;: &quot;My Blog&quot;,
+  &quot;theme&quot;: &quot;default&quot;,
+  &quot;plugins&quot;: [
+    {
+      &quot;name&quot;: &quot;plugin-name&quot;,
+      &quot;options&quot;: {
+        &quot;key&quot;: &quot;value&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+<h3>Configuration Reference <a id="configuration-reference"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>&quot;My Zeno Blog&quot;</code></td>
+<td>Site title</td>
+</tr>
+<tr>
+<td><code>theme</code></td>
+<td><code>&quot;default&quot;</code></td>
+<td>Theme folder name</td>
+</tr>
+<tr>
+<td><code>plugins</code></td>
+<td><code>[]</code></td>
+<td>Array of plugin configurations</td>
+</tr>
+</tbody>
+</table>
+<h3>Common Examples <a id="common-examples"></a></h3>
+<h3>Blog Setup</h3>
+<pre><code class="language-json">{
+  &quot;title&quot;: &quot;John's Tech Blog&quot;,
+  &quot;theme&quot;: &quot;classy&quot;,
+  &quot;plugins&quot;: [
+    { &quot;name&quot;: &quot;toc&quot; },
+    { &quot;name&quot;: &quot;analytics&quot;, &quot;options&quot;: { &quot;id&quot;: &quot;GA-123&quot; } }
+  ]
+}
+</code></pre>
+<h3>Documentation Site</h3>
+<pre><code class="language-json">{
+  &quot;title&quot;: &quot;Project Docs&quot;,
+  &quot;theme&quot;: &quot;docs&quot;,
+  &quot;plugins&quot;: [
+    { &quot;name&quot;: &quot;toc&quot;, &quot;options&quot;: { &quot;minHeadings&quot;: 3 } },
+    { &quot;name&quot;: &quot;search&quot; }
+  ]
+}
+</code></pre>
+<h3>Plugin Configuration <a id="plugin-configuration"></a></h3>
+<p>Plugins are configured as objects with <code>name</code> and optional <code>options</code>:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    { &quot;name&quot;: &quot;simple-plugin&quot; },
+    {
+      &quot;name&quot;: &quot;advanced-plugin&quot;,
+      &quot;options&quot;: {
+        &quot;setting1&quot;: &quot;value1&quot;,
+        &quot;setting2&quot;: true,
+        &quot;setting3&quot;: 42
+      }
+    }
+  ]
+}
+</code></pre>
+<h3>Validation <a id="validation"></a></h3>
+<p>Zeno validates your config on build. Common errors:</p>
+<pre><code class="language-json">// ❌ Wrong - strings required
+{
+  &quot;title&quot;: 123,
+  &quot;theme&quot;: true
+}
 
-# Build and serve
-zeno build
-zeno serve 3000</code></pre>
+// ✅ Correct
+{
+  &quot;title&quot;: &quot;My Blog&quot;,
+  &quot;theme&quot;: &quot;default&quot;
+}
+</code></pre>
+<h3>Quick Tips <a id="quick-tips"></a></h3>
+<ul>
+<li><strong>Keep it simple</strong> - Start with just title and theme</li>
+<li><strong>Use relative paths</strong> - Avoid absolute directory paths</li>
+<li><strong>Test locally</strong> - Run <code>zeno build</code> to validate config</li>
+<li><strong>Version control</strong> - Always commit your config file</li>
+</ul>
+
         </div>
-      </div>
-      
-      <section class="features-section">
-        <h2>Core Features</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">📝</div>
-            <h3>Markdown to HTML</h3>
-            <p>Write posts in plain .md files with frontmatter support</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3>Themes</h3>
-            <p>Simple folder-based themes with components</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🔌</div>
-            <h3>Plugins</h3>
-            <p>Extend with hooks: onMarkdownParse, onRenderHTML, onPostBuild</p>
+          
+          <div class="article-actions">
+            <a href="https://github.com/mine3krish/zeno/" class="edit-page">
+              <span class="edit-icon">✏️</span>
+              Edit this page
+            </a>
           </div>
         </div>
-      </section>
-      
-      <section class="docs-grid">
-        <h2>Documentation</h2>
-        <div class="docs-cards">
-          <div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/configuration/" class="card-link">Configuration</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Basic Configuration All Options Configuration Reference Common Examples Plugin Configuration Validation Quick Tips Configuration Zeno uses a single zeno.config.json file to configure...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/configuration/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/installation/" class="card-link">Installation</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Prerequisites Quick Install Alternative Methods Platform Setup Troubleshooting Installation Prerequisites Node.js 16+ npm 7+ Check your versions: node --version npm --version Quick I...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/installation/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/introduction-to-zeno/" class="card-link">Introduction to Zeno</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents What is Zeno? Why Choose Zeno? How Zeno Works Core Philosophy What Makes Zeno Different? Quick Example Plugin Example Who Is Zeno For? Getting Started Community &amp; Support What's ...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/introduction-to-zeno/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/markdown/" class="card-link">Markdown</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Basic Post Structure Section Heading Frontmatter Markdown Syntax H2 Heading File Organization Post Examples Installation Your First Post Configuration Methods Content Tips File Proce...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/markdown/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/plugins/" class="card-link">Plugins</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Using Plugins Built-in Plugins Plugin Hooks Creating Plugins Quick Examples Plugin Data Plugin Options Plugin Tips Plugins Plugins extend Zeno's functionality through simple hooks. A...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/plugins/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/themes/" class="card-link">Themes</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Using Themes Built-in Themes Theme Structure Templates Placeholders Components Creating a Theme Theme Tips Themes Themes control how your blog looks. Simple folder-based system with ...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/themes/" class="card-arrow">→</a>
-  </div>
-</div>
-        </div>
-      </section>
+      </article>
     </main>
   </div>
   
@@ -257,6 +257,59 @@ zeno serve 3000</code></pre>
     </div>
   </div>
 </footer>
+  
+  <script>
+    // Generate table of contents
+    document.addEventListener('DOMContentLoaded', function() {
+      addCopyButtons();
+      setupScrollSpy();
+    });
+    
+    function addCopyButtons() {
+      const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+      codeBlocks.forEach(block => {
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.innerHTML = '📋 Copy';
+        button.addEventListener('click', () => {
+          navigator.clipboard.writeText(block.querySelector('code').textContent);
+          button.innerHTML = '✅ Copied!';
+          setTimeout(() => button.innerHTML = '📋 Copy', 2000);
+        });
+        
+        block.style.position = 'relative';
+        block.appendChild(button);
+      });
+    }
+    
+    function setupScrollSpy() {
+      const links = document.querySelectorAll('.toc-link');
+      const sections = Array.from(links).map(link => 
+        document.querySelector(link.getAttribute('href'))
+      ).filter(Boolean);
+      
+      function updateActiveLink() {
+        const scrollTop = window.scrollY + 100;
+        
+        let current = '';
+        sections.forEach(section => {
+          if (section.offsetTop <= scrollTop) {
+            current = section.id;
+          }
+        });
+        
+        links.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink();
+    }
+  </script>
   <script>
 // Theme toggle
 function toggleTheme() {

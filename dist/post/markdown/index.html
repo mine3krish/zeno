@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown - Zeno Docs</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+</head>
+<body class="docs-post">
+  <nav class="docs-navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a href="/" class="brand-link">
+        <span class="brand-icon">🚀</span>
+        <span class="brand-text">Zeno Docs</span>
+      </a>
+    </div>
+    
+    <div class="navbar-actions">
+      <a href="https://github.com/mine3krish/zeno" class="nav-link">
+        <span class="link-icon">⭐</span>
+        <span>GitHub</span>
+      </a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+  
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3>Documentation</h3>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+      <span class="toggle-icon">×</span>
+    </button>
+  </div>
+  
+  <nav class="sidebar-nav">
+    <div class="nav-section">
+      <h4 class="nav-section-title">Getting Started</h4>
+      <ul class="nav-list">
+        <li><a href="/post/introduction-to-zeno/" class="nav-item">Introduction</a></li>
+        <li><a href="/post/installation/" class="nav-item">Installation</a></li>
+      </ul>
+    </div>
+    
+    <div class="nav-section">
+      <h4 class="nav-section-title">Core Concepts</h4>
+      <ul class="nav-list">
+        <li><a href="/post/configuration/" class="nav-item">Configuration</a></li>
+        <li><a href="/post/themes" class="nav-item">Themes</a></li>
+        <li><a href="/post/plugins" class="nav-item">Plugins</a></li>
+        <li><a href="/post/markdown" class="nav-item">Markdown</a></li>
+      </ul>
+    </div>
+  </nav>
+</aside>
+    
+    <main class="docs-main">
+      <article class="docs-article">
+        <div class="article-header">
+          <div class="breadcrumb">
+            <a href="/">Documentation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span>Markdown</span>
+          </div>
+          
+          <h1 class="article-title">Markdown</h1>
+          
+          <div class="article-meta">
+            <time class="article-date">2024-09-19</time>
+            <div class="article-tags">
+              <span class="tag">Guide</span>
+              <span class="tag">Tutorial</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="article-content">
+          <h2>Table of Contents</h2>
+<ul>
+<li><a href="#basic-post-structure">Basic Post Structure</a></li>
+<li><a href="#section-heading">Section Heading</a></li>
+<li><a href="#frontmatter">Frontmatter</a></li>
+<li><a href="#markdown-syntax">Markdown Syntax</a></li>
+<li><a href="#h2-heading">H2 Heading</a></li>
+<li><a href="#file-organization">File Organization</a></li>
+<li><a href="#post-examples">Post Examples</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#your-first-post">Your First Post</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#content-tips">Content Tips</a></li>
+<li><a href="#file-processing">File Processing</a></li>
+</ul>
+<h1>Markdown</h1>
+<p>Write your posts in Markdown with frontmatter metadata. Simple, clean, and version-controlled.</p>
+<h3>Basic Post Structure <a id="basic-post-structure"></a></h3>
+<pre><code class="language-markdown">---
+title: &quot;My First Post&quot;
+date: &quot;2024-09-19&quot;
+tags: &quot;blog, getting-started&quot;
+---
+
+# My First Post
+
+This is the content of my post written in **Markdown**.
+
+### Section Heading &lt;a id=&quot;section-heading&quot;&gt;&lt;/a&gt;
+
+More content here...
+</code></pre>
+<h3>Frontmatter <a id="frontmatter"></a></h3>
+<p>Add metadata at the top of your <code>.md</code> files:</p>
+<h3>Required Fields</h3>
+<pre><code class="language-yaml">---
+title: &quot;Post Title&quot;
+date: &quot;2024-09-19&quot;
+---
+</code></pre>
+<h3>Optional Fields</h3>
+<pre><code class="language-yaml">---
+title: &quot;Complete Post Example&quot;
+date: &quot;2024-09-19&quot;
+tags: &quot;tutorial, guide, markdown&quot;
+excerpt: &quot;Short description for previews&quot;
+author: &quot;Your Name&quot;
+draft: false
+toc: true
+---
+</code></pre>
+<h3>Markdown Syntax <a id="markdown-syntax"></a></h3>
+<h3>Headers</h3>
+<pre><code class="language-markdown"># H1 Heading
+### H2 Heading &lt;a id=&quot;h2-heading&quot;&gt;&lt;/a&gt;
+### H3 Heading
+#### H4 Heading
+</code></pre>
+<h3>Text Formatting</h3>
+<pre><code class="language-markdown">**Bold text**
+*Italic text*
+~~Strikethrough~~
+`Inline code`
+</code></pre>
+<h3>Links &amp; Images</h3>
+<pre><code class="language-markdown">[Link text](https://example.com)
+[Internal link](/other-post.html)
+
+![Alt text](image.jpg)
+![Image with caption](https://example.com/image.png)
+</code></pre>
+<h3>Lists</h3>
+<pre><code class="language-markdown">- Unordered list
+- Another item
+  - Nested item
+  - Another nested
+
+1. Ordered list
+2. Second item
+3. Third item
+</code></pre>
+<h3>Code Blocks</h3>
+<pre><code class="language-markdown">```javascript
+// Code with syntax highlighting
+function hello() {
+  console.log(&quot;Hello, Zeno!&quot;);
+}
+```
+
+```bash
+# Shell commands
+zeno build
+zeno serve
+```
+</code></pre>
+<h3>Blockquotes</h3>
+<pre><code class="language-markdown">&gt; This is a blockquote
+&gt; 
+&gt; Multiple paragraphs work too
+</code></pre>
+<h3>Tables</h3>
+<pre><code class="language-markdown">| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Row 1    | Data     | More     |
+| Row 2    | Info     | Here     |
+</code></pre>
+<h3>Horizontal Rule</h3>
+<pre><code class="language-markdown">---
+</code></pre>
+<h3>File Organization <a id="file-organization"></a></h3>
+<h3>Directory Structure</h3>
+<pre><code>posts/
+├── 2024-01-15-first-post.md
+├── 2024-02-20-second-post.md
+</code></pre>
+<h3>File Naming</h3>
+<ul>
+<li>Use descriptive names: <code>getting-started.md</code></li>
+<li>Include dates: <code>2024-09-19-new-features.md</code></li>
+<li>Use hyphens: <code>my-blog-post.md</code> (not spaces)</li>
+</ul>
+<h3>Post Examples <a id="post-examples"></a></h3>
+<h3>Blog Post</h3>
+<pre><code class="language-markdown">---
+title: &quot;Getting Started with Zeno&quot;
+date: &quot;2024-09-19&quot;
+tags: &quot;tutorial, beginner&quot;
+excerpt: &quot;Learn how to create your first blog with Zeno&quot;
+---
+
+# Getting Started with Zeno
+
+Welcome to **Zeno**! This guide will help you create your first blog.
+
+### Installation &lt;a id=&quot;installation&quot;&gt;&lt;/a&gt;
+
+First, install Zeno:
+
+```bash
+npx zeno-blog init my-blog
+</code></pre>
+<h3>Your First Post <a id="your-first-post"></a></h3>
+<p>Create a new file in the <code>posts/</code> directory...</p>
+<pre><code>
+### Documentation Page
+```markdown
+---
+title: &quot;API Reference&quot;
+date: &quot;2024-09-19&quot;
+tags: &quot;docs, api, reference&quot;
+toc: true
+---
+
+# API Reference
+
+Complete reference for the Zeno API.
+
+### Configuration &lt;a id=&quot;configuration&quot;&gt;&lt;/a&gt;
+
+### Basic Options
+
+The following options are available...
+
+### Methods &lt;a id=&quot;methods&quot;&gt;&lt;/a&gt;
+
+### `zeno.build()`
+
+Builds your blog...
+</code></pre>
+<h3>Draft Post</h3>
+<pre><code class="language-markdown">---
+title: &quot;Work in Progress&quot;
+date: &quot;2024-09-19&quot;
+draft: true
+---
+
+# Work in Progress
+
+This post is not ready yet...
+</code></pre>
+<h3>Content Tips <a id="content-tips"></a></h3>
+<h3>Writing Style</h3>
+<ul>
+<li><strong>Use headers</strong> - Structure your content</li>
+<li><strong>Short paragraphs</strong> - Easier to read online</li>
+<li><strong>Code examples</strong> - Show, don't just tell</li>
+<li><strong>Lists and bullets</strong> - Break up dense text</li>
+</ul>
+<h3>SEO Friendly</h3>
+<ul>
+<li><strong>Descriptive titles</strong> - Clear and specific</li>
+<li><strong>Good excerpts</strong> - Summarize your content</li>
+<li><strong>Relevant tags</strong> - Help with organization</li>
+<li><strong>Internal links</strong> - Connect related posts</li>
+</ul>
+<h3>Performance</h3>
+<ul>
+<li><strong>Optimize images</strong> - Use appropriate sizes</li>
+<li><strong>External links</strong> - Open in new tabs if needed</li>
+<li><strong>Code blocks</strong> - Use syntax highlighting</li>
+</ul>
+<h3>File Processing <a id="file-processing"></a></h3>
+<p>Zeno processes your Markdown files:</p>
+<ol>
+<li><strong>Parse frontmatter</strong> - Extract metadata</li>
+<li><strong>Convert to HTML</strong> - Using marked.js</li>
+<li><strong>Apply plugins</strong> - Run content hooks</li>
+<li><strong>Render templates</strong> - Insert into themes</li>
+<li><strong>Output files</strong> - Generate final HTML</li>
+</ol>
+
+        </div>
+          
+          <div class="article-actions">
+            <a href="https://github.com/mine3krish/zeno/" class="edit-page">
+              <span class="edit-icon">✏️</span>
+              Edit this page
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+  
+  <footer class="docs-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Zeno Docs</h4>
+        <p>Blazing fast blogs for everyone</p>
+        <div class="footer-links">
+          <a href="https://github.com/mine3krish/zeno" class="footer-link">GitHub</a>
+          <a href="https://npmjs.com/package/zeno-blog" class="footer-link">npm</a>
+          <!-- <a href="/changelog.html" class="footer-link">Changelog</a> -->
+        </div>
+      </div>
+      
+      <!-- <div class="footer-section">
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="/examples.html" class="footer-link">Examples</a>
+          <a href="/templates.html" class="footer-link">Templates</a>
+          <a href="/community.html" class="footer-link">Community</a>
+        </div>
+      </div>
+       -->
+
+      <div class="footer-section">
+        <h4>Support</h4>
+        <div class="footer-links">
+          <a href="https://github.com/mine3krish/zeno/issues" class="footer-link">Report Issues</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Built with ❤️ and Zeno.</p>
+    </div>
+  </div>
+</footer>
+  
+  <script>
+    // Generate table of contents
+    document.addEventListener('DOMContentLoaded', function() {
+      addCopyButtons();
+      setupScrollSpy();
+    });
+    
+    function addCopyButtons() {
+      const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+      codeBlocks.forEach(block => {
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.innerHTML = '📋 Copy';
+        button.addEventListener('click', () => {
+          navigator.clipboard.writeText(block.querySelector('code').textContent);
+          button.innerHTML = '✅ Copied!';
+          setTimeout(() => button.innerHTML = '📋 Copy', 2000);
+        });
+        
+        block.style.position = 'relative';
+        block.appendChild(button);
+      });
+    }
+    
+    function setupScrollSpy() {
+      const links = document.querySelectorAll('.toc-link');
+      const sections = Array.from(links).map(link => 
+        document.querySelector(link.getAttribute('href'))
+      ).filter(Boolean);
+      
+      function updateActiveLink() {
+        const scrollTop = window.scrollY + 100;
+        
+        let current = '';
+        sections.forEach(section => {
+          if (section.offsetTop <= scrollTop) {
+            current = section.id;
+          }
+        });
+        
+        links.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink();
+    }
+  </script>
+  <script>
+// Theme toggle
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+// Sidebar toggle
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
+
+// Initialize theme and other functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+  
+  // Setup search functionality
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      
+      if (query.length > 2) {
+        // Mock search results - replace with actual search implementation
+        const mockResults = [
+          { title: 'Getting Started', url: '/getting-started.html' },
+          { title: 'Configuration', url: '/configuration.html' },
+          { title: 'Themes', url: '/themes.html' },
+          { title: 'Plugins', url: '/plugins.html' }
+        ].filter(item => item.title.toLowerCase().includes(query));
+        
+        if (mockResults.length > 0) {
+          searchResults.innerHTML = mockResults.map(result => 
+            `<a href="${result.url}" class="search-result-item">${result.title}</a>`
+          ).join('');
+          searchResults.style.display = 'block';
+        } else {
+          searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+          searchResults.style.display = 'block';
+        }
+      } else {
+        searchResults.style.display = 'none';
+      }
+    });
+    
+    // Hide search results when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+      }
+    });
+  }
+  
+  // Set active navigation item
+  const currentPath = window.location.pathname;
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    if (item.getAttribute('href') === currentPath) {
+      item.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
