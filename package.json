@@ -11,7 +11,13 @@
     "build": "node ./bin/zeno.js build",
     "init": "node ./bin/zeno.js init"
   },
-  "keywords": ["blog", "markdown", "plugin", "static site", "zeno"],
+  "keywords": [
+    "blog",
+    "markdown",
+    "plugin",
+    "static site",
+    "zeno"
+  ],
   "author": "mine3krish",
   "license": "MIT",
   "type": "module",
@@ -35,6 +41,7 @@
     "access": "public"
   },
   "dependencies": {
+    "chalk": "^5.6.2",
     "chokidar": "^4.0.3",
     "express": "^5.1.0",
     "gray-matter": "^4.0.3",
