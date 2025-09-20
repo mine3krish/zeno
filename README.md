@@ -134,9 +134,9 @@ themes/default/
 
 ### ⚡ Plugin Hooks (Developers)
 Zeno provides plugin hooks so developers can extend functionality:
-- onMarkdownParse(markdown, frontmatter) — Modify Markdown before rendering.
-- onRenderHTML(html, frontmatter) — Modify HTML after rendering.
-- onPostBuild(distDir) — Hook after the blog is built.
+- `onMarkdownParse(markdown, frontmatter)` — Modify Markdown before rendering.
+- `onRenderHTML(html, frontmatter)` — Modify HTML after rendering.
+- `onPostBuild(distDir)` — Hook after the blog is built.
 
 <hr>
 
