@@ -2,7 +2,7 @@ export default function tocPlugin() {
   return {
     onMarkdownParse(markdown) {
       const headers = [];
-      markdown = markdown.replace(/^### (.+)$/gm, (_, text) => {
+      markdown = markdown.replace(/^## (.+)$/gm, (_, text) => {
         headers.push(text);
         return `### ${text} <a id="${text.toLowerCase().replace(/\s+/g, '-')}"></a>`;
       });

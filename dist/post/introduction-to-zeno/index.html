@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Zeno - Zeno Docs</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+</head>
+<body class="docs-post">
+  <nav class="docs-navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a href="/" class="brand-link">
+        <span class="brand-icon">🚀</span>
+        <span class="brand-text">Zeno Docs</span>
+      </a>
+    </div>
+    
+    <div class="navbar-actions">
+      <a href="https://github.com/mine3krish/zeno" class="nav-link">
+        <span class="link-icon">⭐</span>
+        <span>GitHub</span>
+      </a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+  
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3>Documentation</h3>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+      <span class="toggle-icon">×</span>
+    </button>
+  </div>
+  
+  <nav class="sidebar-nav">
+    <div class="nav-section">
+      <h4 class="nav-section-title">Getting Started</h4>
+      <ul class="nav-list">
+        <li><a href="/post/introduction-to-zeno/" class="nav-item">Introduction</a></li>
+        <li><a href="/post/installation/" class="nav-item">Installation</a></li>
+      </ul>
+    </div>
+    
+    <div class="nav-section">
+      <h4 class="nav-section-title">Core Concepts</h4>
+      <ul class="nav-list">
+        <li><a href="/post/configuration/" class="nav-item">Configuration</a></li>
+        <li><a href="/post/themes" class="nav-item">Themes</a></li>
+        <li><a href="/post/plugins" class="nav-item">Plugins</a></li>
+        <li><a href="/post/markdown" class="nav-item">Markdown</a></li>
+      </ul>
+    </div>
+  </nav>
+</aside>
+    
+    <main class="docs-main">
+      <article class="docs-article">
+        <div class="article-header">
+          <div class="breadcrumb">
+            <a href="/">Documentation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span>Introduction to Zeno</span>
+          </div>
+          
+          <h1 class="article-title">Introduction to Zeno</h1>
+          
+          <div class="article-meta">
+            <time class="article-date">2025-09-19</time>
+            <div class="article-tags">
+              <span class="tag">Guide</span>
+              <span class="tag">Tutorial</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="article-content">
+          <h2>Table of Contents</h2>
+<ul>
+<li><a href="#what-is-zeno?">What is Zeno?</a></li>
+<li><a href="#why-choose-zeno?">Why Choose Zeno?</a></li>
+<li><a href="#how-zeno-works">How Zeno Works</a></li>
+<li><a href="#core-philosophy">Core Philosophy</a></li>
+<li><a href="#what-makes-zeno-different?">What Makes Zeno Different?</a></li>
+<li><a href="#quick-example">Quick Example</a></li>
+<li><a href="#plugin-example">Plugin Example</a></li>
+<li><a href="#who-is-zeno-for?">Who Is Zeno For?</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#community-&amp;-support">Community &amp; Support</a></li>
+<li><a href="#what's-next?">What's Next?</a></li>
+<li><a href="#need-help?">Need Help?</a></li>
+</ul>
+<p>Welcome to <strong>Zeno</strong> — the blazing fast, plugin-first Markdown blog framework that makes creating beautiful blogs effortless. Whether you're a developer looking for a simple blogging solution or someone who wants complete control over their blog's functionality, Zeno is designed to get out of your way and let you focus on what matters: <strong>writing great content</strong>.</p>
+<h3>What is Zeno? <a id="what-is-zeno?"></a></h3>
+<p>Zeno is a lightweight, JavaScript-based static site generator specifically built for blogs. It transforms your Markdown files into beautiful, fast-loading websites with minimal configuration. Think of it as the perfect balance between simplicity and power.</p>
+<pre><code class="language-bash"># It's really this simple
+npx zeno-blog init my-blog
+cd my-blog
+zeno build
+zeno serve
+</code></pre>
+<p>Unlike heavyweight frameworks that come with everything you might never need, Zeno starts minimal and grows with your requirements through its powerful plugin system.</p>
+<h3>Why Choose Zeno? <a id="why-choose-zeno?"></a></h3>
+<h3>🚀 <strong>Blazing Fast</strong></h3>
+<ul>
+<li><strong>Zero client-side JavaScript</strong> by default</li>
+<li><strong>Optimized build process</strong> with minimal overhead</li>
+<li><strong>Static file generation</strong> for maximum performance</li>
+<li><strong>CDN-ready</strong> output that scales globally</li>
+</ul>
+<h3>✨ <strong>Developer-First</strong></h3>
+<ul>
+<li><strong>Plugin architecture</strong> — extend functionality exactly how you need it</li>
+<li><strong>Simple CLI</strong> with intuitive commands</li>
+<li><strong>Hot reload development</strong> server</li>
+<li><strong>Theme system</strong> for complete design control</li>
+</ul>
+<h3>📝 <strong>Content-Focused</strong></h3>
+<ul>
+<li><strong>Write in Markdown</strong> with frontmatter support</li>
+<li><strong>Tags and categorization</strong> built-in</li>
+<li><strong>No database required</strong> — your content is version-controlled</li>
+<li><strong>Easy migration</strong> from other platforms</li>
+</ul>
+<h3>🛠 <strong>Hackable &amp; Extensible</strong></h3>
+<ul>
+<li><strong>Hook-based plugins</strong> for maximum flexibility</li>
+<li><strong>Component-based themes</strong> for reusability</li>
+<li><strong>Simple configuration</strong> via JSON</li>
+<li><strong>Open source</strong> and community-driven</li>
+</ul>
+<h3>How Zeno Works <a id="how-zeno-works"></a></h3>
+<p>Zeno follows a simple, predictable workflow:`</p>
+<ol>
+<li><strong>Write content</strong> in Markdown files with frontmatter metadata</li>
+<li><strong>Configure</strong> your blog with a simple JSON file</li>
+<li><strong>Choose a theme</strong> or create your own</li>
+<li><strong>Add plugins</strong> for extra functionality</li>
+<li><strong>Build</strong> your blog into optimized static files</li>
+<li><strong>Deploy</strong> anywhere — GitHub Pages, Netlify, Vercel, or your own server</li>
+</ol>
+<h3>Core Philosophy <a id="core-philosophy"></a></h3>
+<p>Zeno is built around several core principles:</p>
+<h3><strong>Convention over Configuration</strong></h3>
+<p>Sensible defaults mean you can get started immediately, but everything is customizable when you need it.</p>
+<h3><strong>Plugin-First Architecture</strong></h3>
+<p>The core is intentionally minimal. Features are added through plugins, keeping the framework lean and focused.</p>
+<h3><strong>Developer Experience</strong></h3>
+<p>Fast builds, hot reloading, clear error messages, and intuitive APIs make development enjoyable.</p>
+<h3><strong>Performance by Default</strong></h3>
+<p>Every decision is made with performance in mind — from the build process to the generated output.</p>
+<h3>What Makes Zeno Different? <a id="what-makes-zeno-different?"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Zeno</th>
+<th>Gatsby</th>
+<th>Next.js</th>
+<th>Hugo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Learning Curve</strong></td>
+<td>Minimal</td>
+<td>Steep</td>
+<td>Medium</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Build Speed</strong></td>
+<td>⚡ Fast</td>
+<td>Slow</td>
+<td>Medium</td>
+<td>⚡ Very Fast</td>
+</tr>
+<tr>
+<td><strong>Plugin System</strong></td>
+<td>Simple hooks</td>
+<td>GraphQL-heavy</td>
+<td>Complex</td>
+<td>Go templates</td>
+</tr>
+<tr>
+<td><strong>JavaScript Required</strong></td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Customization</strong></td>
+<td>Theme-based</td>
+<td>Component-heavy</td>
+<td>Full-stack</td>
+<td>Template-based</td>
+</tr>
+<tr>
+<td><strong>Best For</strong></td>
+<td>Blogs</td>
+<td>Complex sites</td>
+<td>Full apps</td>
+<td>Documentation</td>
+</tr>
+</tbody>
+</table>
+<h3>Quick Example <a id="quick-example"></a></h3>
+<p>Here's what a typical Zeno workflow looks like:</p>
+<p><strong>1. Create a new blog:</strong></p>
+<pre><code class="language-bash">npx zeno-blog init my-awesome-blog
+cd my-awesome-blog
+</code></pre>
+<p><strong>2. Write your first post:</strong></p>
+<pre><code class="language-markdown">---
+title: &quot;Hello, Zeno!&quot;
+date: &quot;2024-09-19&quot;
+tags: &quot;first-post, introduction&quot;
+---
+
+# My First Zeno Post
+
+This is incredibly easy! I can write in **Markdown** and Zeno 
+handles all the heavy lifting.
+
+```javascript
+// Even code blocks work perfectly
+console.log(&quot;Hello, Zeno!&quot;);
+</code></pre>
+<pre><code>
+**3. Build and serve:**
+```bash
+zeno build
+zeno serve 3000
+</code></pre>
+<p><strong>4. Your blog is live at <code>http://localhost:3000</code>!</strong></p>
+<h3>Plugin Example <a id="plugin-example"></a></h3>
+<p>Want to add Google Analytics? Just create a simple plugin:</p>
+<pre><code class="language-javascript">// plugins/analytics.js
+export default function analyticsPlugin(options) {
+  return {
+    name: 'google-analytics',
+    onRenderHTML(html) {
+      const script = `
+        &lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=${options.trackingId}&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${options.trackingId}');
+        &lt;/script&gt;
+      `;
+      return html.replace('&lt;/head&gt;', script + '&lt;/head&gt;');
+    }
+  };
+}
+</code></pre>
+<p>Add it to your config:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    { 
+      &quot;name&quot;: &quot;analytics&quot;, 
+      &quot;options&quot;: { &quot;trackingId&quot;: &quot;GA_TRACKING_ID&quot; } 
+    }
+  ]
+}
+</code></pre>
+<p>That's it! Analytics is now added to every page.</p>
+<h3>Who Is Zeno For? <a id="who-is-zeno-for?"></a></h3>
+<h3><strong>Perfect For:</strong></h3>
+<ul>
+<li><strong>Developers</strong> who want a simple, hackable blogging platform</li>
+<li><strong>Technical writers</strong> who prefer Markdown over WYSIWYG editors</li>
+<li><strong>Teams</strong> who want version-controlled content</li>
+<li><strong>Performance enthusiasts</strong> who demand fast-loading sites</li>
+<li><strong>Minimalists</strong> who don't need complex CMS features</li>
+</ul>
+<h3><strong>Maybe Not For:</strong></h3>
+<ul>
+<li><strong>Non-technical users</strong> who prefer visual editors</li>
+<li><strong>Large teams</strong> needing advanced content workflows</li>
+<li><strong>E-commerce sites</strong> requiring dynamic functionality</li>
+<li><strong>Complex web applications</strong> beyond blogging</li>
+</ul>
+<h3>Getting Started <a id="getting-started"></a></h3>
+<p>Ready to dive in? Here are your next steps:</p>
+<ol>
+<li><strong><a href="/post/installation">Installation</a></strong> — Set up Zeno on your machine</li>
+<li><strong><a href="/post/configuration">Configuration</a></strong> — Learn about zeno.config.json</li>
+<li><strong><a href="/post/theme">Themes</a></strong> — Understand how theming works</li>
+<li><strong><a href="/post/plugins">Plugins</a></strong> — Extend Zeno's functionality</li>
+</ol>
+<h3>Community &amp; Support <a id="community-&-support"></a></h3>
+<p>Zeno is open source and community-driven:</p>
+<ul>
+<li><strong><a href="https://github.com/mine3krish/zeno">GitHub Repository</a></strong> — Source code, issues, and contributions</li>
+<li><strong><a href="/">Documentation</a></strong> — Comprehensive guides and API reference</li>
+</ul>
+<h3>What's Next? <a id="what's-next?"></a></h3>
+<p>In upcoming releases, we're working on:</p>
+<ul>
+<li><strong>Advanced theming system</strong> with component inheritance</li>
+<li><strong>Built-in SEO optimizations</strong> and meta tag generation</li>
+<li><strong>RSS feed generation</strong> plugin</li>
+<li><strong>Image optimization</strong> pipeline</li>
+<li><strong>Deployment helpers</strong> for popular platforms</li>
+<li><strong>Content collections</strong> for organizing large sites</li>
+</ul>
+<hr>
+<p><strong>Ready to build something amazing?</strong> Let's get you <a href="/post/installation">set up with Zeno</a> and create your first blog!</p>
+<h3>Need Help? <a id="need-help?"></a></h3>
+<ul>
+<li>📚 <strong>Browse the <a href="/">full documentation</a></strong> for detailed guides</li>
+<li>🐛 <strong>Found a bug?</strong> <a href="https://github.com/mine3rish/zeno/issues">Report it on GitHub</a></li>
+<li>💡 <strong>Have an idea?</strong> <a href="https://github.com/mine3rish/zeno/discussions">Start a discussion</a></li>
+</ul>
+
+        </div>
+          
+          <div class="article-actions">
+            <a href="https://github.com/mine3krish/zeno/" class="edit-page">
+              <span class="edit-icon">✏️</span>
+              Edit this page
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+  
+  <footer class="docs-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Zeno Docs</h4>
+        <p>Blazing fast blogs for everyone</p>
+        <div class="footer-links">
+          <a href="https://github.com/mine3krish/zeno" class="footer-link">GitHub</a>
+          <a href="https://npmjs.com/package/zeno-blog" class="footer-link">npm</a>
+          <!-- <a href="/changelog.html" class="footer-link">Changelog</a> -->
+        </div>
+      </div>
+      
+      <!-- <div class="footer-section">
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="/examples.html" class="footer-link">Examples</a>
+          <a href="/templates.html" class="footer-link">Templates</a>
+          <a href="/community.html" class="footer-link">Community</a>
+        </div>
+      </div>
+       -->
+
+      <div class="footer-section">
+        <h4>Support</h4>
+        <div class="footer-links">
+          <a href="https://github.com/mine3krish/zeno/issues" class="footer-link">Report Issues</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Built with ❤️ and Zeno.</p>
+    </div>
+  </div>
+</footer>
+  
+  <script>
+    // Generate table of contents
+    document.addEventListener('DOMContentLoaded', function() {
+      addCopyButtons();
+      setupScrollSpy();
+    });
+    
+    function addCopyButtons() {
+      const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+      codeBlocks.forEach(block => {
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.innerHTML = '📋 Copy';
+        button.addEventListener('click', () => {
+          navigator.clipboard.writeText(block.querySelector('code').textContent);
+          button.innerHTML = '✅ Copied!';
+          setTimeout(() => button.innerHTML = '📋 Copy', 2000);
+        });
+        
+        block.style.position = 'relative';
+        block.appendChild(button);
+      });
+    }
+    
+    function setupScrollSpy() {
+      const links = document.querySelectorAll('.toc-link');
+      const sections = Array.from(links).map(link => 
+        document.querySelector(link.getAttribute('href'))
+      ).filter(Boolean);
+      
+      function updateActiveLink() {
+        const scrollTop = window.scrollY + 100;
+        
+        let current = '';
+        sections.forEach(section => {
+          if (section.offsetTop <= scrollTop) {
+            current = section.id;
+          }
+        });
+        
+        links.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink();
+    }
+  </script>
+  <script>
+// Theme toggle
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+// Sidebar toggle
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
+
+// Initialize theme and other functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+  
+  // Setup search functionality
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      
+      if (query.length > 2) {
+        // Mock search results - replace with actual search implementation
+        const mockResults = [
+          { title: 'Getting Started', url: '/getting-started.html' },
+          { title: 'Configuration', url: '/configuration.html' },
+          { title: 'Themes', url: '/themes.html' },
+          { title: 'Plugins', url: '/plugins.html' }
+        ].filter(item => item.title.toLowerCase().includes(query));
+        
+        if (mockResults.length > 0) {
+          searchResults.innerHTML = mockResults.map(result => 
+            `<a href="${result.url}" class="search-result-item">${result.title}</a>`
+          ).join('');
+          searchResults.style.display = 'block';
+        } else {
+          searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+          searchResults.style.display = 'block';
+        }
+      } else {
+        searchResults.style.display = 'none';
+      }
+    });
+    
+    // Hide search results when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+      }
+    });
+  }
+  
+  // Set active navigation item
+  const currentPath = window.location.pathname;
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    if (item.getAttribute('href') === currentPath) {
+      item.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>

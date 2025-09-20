@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plugins - Zeno Docs</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+</head>
+<body class="docs-post">
+  <nav class="docs-navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a href="/" class="brand-link">
+        <span class="brand-icon">🚀</span>
+        <span class="brand-text">Zeno Docs</span>
+      </a>
+    </div>
+    
+    <div class="navbar-actions">
+      <a href="https://github.com/mine3krish/zeno" class="nav-link">
+        <span class="link-icon">⭐</span>
+        <span>GitHub</span>
+      </a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+  
+  <div class="docs-layout">
+    <aside class="docs-sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3>Documentation</h3>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+      <span class="toggle-icon">×</span>
+    </button>
+  </div>
+  
+  <nav class="sidebar-nav">
+    <div class="nav-section">
+      <h4 class="nav-section-title">Getting Started</h4>
+      <ul class="nav-list">
+        <li><a href="/post/introduction-to-zeno/" class="nav-item">Introduction</a></li>
+        <li><a href="/post/installation/" class="nav-item">Installation</a></li>
+      </ul>
+    </div>
+    
+    <div class="nav-section">
+      <h4 class="nav-section-title">Core Concepts</h4>
+      <ul class="nav-list">
+        <li><a href="/post/configuration/" class="nav-item">Configuration</a></li>
+        <li><a href="/post/themes" class="nav-item">Themes</a></li>
+        <li><a href="/post/plugins" class="nav-item">Plugins</a></li>
+        <li><a href="/post/markdown" class="nav-item">Markdown</a></li>
+      </ul>
+    </div>
+  </nav>
+</aside>
+    
+    <main class="docs-main">
+      <article class="docs-article">
+        <div class="article-header">
+          <div class="breadcrumb">
+            <a href="/">Documentation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span>Plugins</span>
+          </div>
+          
+          <h1 class="article-title">Plugins</h1>
+          
+          <div class="article-meta">
+            <time class="article-date">2024-09-19</time>
+            <div class="article-tags">
+              <span class="tag">Guide</span>
+              <span class="tag">Tutorial</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="article-content">
+          <h2>Table of Contents</h2>
+<ul>
+<li><a href="#using-plugins">Using Plugins</a></li>
+<li><a href="#built-in-plugins">Built-in Plugins</a></li>
+<li><a href="#plugin-hooks">Plugin Hooks</a></li>
+<li><a href="#creating-plugins">Creating Plugins</a></li>
+<li><a href="#quick-examples">Quick Examples</a></li>
+<li><a href="#plugin-data">Plugin Data</a></li>
+<li><a href="#plugin-options">Plugin Options</a></li>
+<li><a href="#plugin-tips">Plugin Tips</a></li>
+</ul>
+<h1>Plugins</h1>
+<p>Plugins extend Zeno's functionality through simple hooks. Add features without bloating the core.</p>
+<h3>Using Plugins <a id="using-plugins"></a></h3>
+<p>Add to <code>zeno.config.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    { &quot;name&quot;: &quot;toc&quot; },
+    { &quot;name&quot;: &quot;analytics&quot;, &quot;options&quot;: { &quot;id&quot;: &quot;GA-123&quot; } }
+  ]
+}
+</code></pre>
+<p>Plugins run automatically during build.</p>
+<h3>Built-in Plugins <a id="built-in-plugins"></a></h3>
+<h3><strong>toc</strong> - Table of Contents</h3>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;toc&quot;,
+  &quot;options&quot;: {
+    &quot;minHeadings&quot;: 2,
+    &quot;maxLevel&quot;: 4
+  }
+}
+</code></pre>
+<h3><strong>analytics</strong> - Google Analytics</h3>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;analytics&quot;,
+  &quot;options&quot;: {
+    &quot;trackingId&quot;: &quot;GA-XXXXXXXXX&quot;
+  }
+}
+</code></pre>
+<h3>Plugin Hooks <a id="plugin-hooks"></a></h3>
+<p>Plugins use hooks to modify content:</p>
+<table>
+<thead>
+<tr>
+<th>Hook</th>
+<th>When</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>onMarkdownParse</code></td>
+<td>Before HTML conversion</td>
+<td>Modify markdown</td>
+</tr>
+<tr>
+<td><code>onRenderHTML</code></td>
+<td>After HTML generation</td>
+<td>Modify final HTML</td>
+</tr>
+<tr>
+<td><code>onPostBuild</code></td>
+<td>After build complete</td>
+<td>Run cleanup tasks</td>
+</tr>
+</tbody>
+</table>
+<h3>Creating Plugins <a id="creating-plugins"></a></h3>
+<p>Create <code>plugins/my-plugin.js</code>:</p>
+<pre><code class="language-javascript">export default function myPlugin(options = {}) {
+  return {
+    name: 'my-plugin',
+    
+    onMarkdownParse(markdown) {
+      // Modify markdown before HTML conversion
+      return markdown.replace(/TODO:/g, '⚠️ TODO:');
+    },
+    
+    onRenderHTML(html, frontmatter) {
+      // Modify final HTML
+      return html.replace('&lt;/head&gt;', 
+        '&lt;meta name=&quot;author&quot; content=&quot;Me&quot;&gt;&lt;/head&gt;'
+      );
+    },
+    
+    onPostBuild(buildData) {
+      // Run after build
+      console.log(`Built ${buildData.posts.length} posts`);
+    }
+  };
+}
+</code></pre>
+<p>Use in config:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    { &quot;name&quot;: &quot;my-plugin&quot; }
+  ]
+}
+</code></pre>
+<h3>Quick Examples <a id="quick-examples"></a></h3>
+<h3>Add Google Analytics</h3>
+<pre><code class="language-javascript">// plugins/analytics.js
+export default function analytics(options) {
+  return {
+    name: 'google-analytics',
+    onRenderHTML(html) {
+      const script = `
+        &lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=${options.id}&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${options.id}');
+        &lt;/script&gt;
+      `;
+      return html.replace('&lt;/head&gt;', script + '&lt;/head&gt;');
+    }
+  };
+}
+</code></pre>
+<h3>Add Reading Time</h3>
+<pre><code class="language-javascript">// plugins/reading-time.js
+export default function readingTime(options = {}) {
+  return {
+    name: 'reading-time',
+    onMarkdownParse(markdown) {
+      const words = markdown.split(/\s+/).length;
+      const minutes = Math.ceil(words / (options.wordsPerMinute || 200));
+      return `*${minutes} min read*\n\n${markdown}`;
+    }
+  };
+}
+</code></pre>
+<h3>Auto-generate Sitemap</h3>
+<pre><code class="language-javascript">// plugins/sitemap.js
+import fs from 'fs/promises';
+import path from 'path';
+
+export default function sitemap(options = {}) {
+  return {
+    name: 'sitemap',
+    async onPostBuild(buildData) {
+      const urls = buildData.posts.map(post =&gt; 
+        `${options.baseUrl || 'https://example.com'}/${post.slug}.html`
+      );
+      
+      const sitemapXml = `&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
+${urls.map(url =&gt; `  &lt;url&gt;&lt;loc&gt;${url}&lt;/loc&gt;&lt;/url&gt;`).join('\n')}
+&lt;/urlset&gt;`;
+      
+      await fs.writeFile(
+        path.join(buildData.config.outputDir, 'sitemap.xml'),
+        sitemapXml
+      );
+    }
+  };
+}
+</code></pre>
+<h3>Plugin Data <a id="plugin-data"></a></h3>
+<p>Plugins receive data through hook parameters:</p>
+<h3><code>onMarkdownParse(markdown, frontmatter)</code></h3>
+<ul>
+<li><code>markdown</code> - Raw markdown content</li>
+<li><code>frontmatter</code> - Post metadata object</li>
+</ul>
+<h3><code>onRenderHTML(html, frontmatter)</code></h3>
+<ul>
+<li><code>html</code> - Generated HTML string</li>
+<li><code>frontmatter</code> - Post metadata object</li>
+</ul>
+<h3><code>onPostBuild(buildData)</code></h3>
+<ul>
+<li><code>buildData.config</code> - Zeno configuration</li>
+<li><code>buildData.posts</code> - Array of all posts</li>
+<li><code>buildData.outputDir</code> - Build output directory</li>
+</ul>
+<h3>Plugin Options <a id="plugin-options"></a></h3>
+<p>Pass options from config:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: [
+    {
+      &quot;name&quot;: &quot;my-plugin&quot;,
+      &quot;options&quot;: {
+        &quot;setting1&quot;: &quot;value&quot;,
+        &quot;setting2&quot;: true,
+        &quot;setting3&quot;: 42
+      }
+    }
+  ]
+}
+</code></pre>
+<h3>Plugin Tips <a id="plugin-tips"></a></h3>
+<ul>
+<li><strong>Keep it simple</strong> - One plugin, one feature</li>
+<li><strong>Use options</strong> - Make plugins configurable</li>
+<li><strong>Handle errors</strong> - Wrap in try/catch blocks</li>
+<li><strong>Test thoroughly</strong> - Check with different content</li>
+<li><strong>Export default</strong> - Always use <code>export default</code></li>
+</ul>
+
+        </div>
+          
+          <div class="article-actions">
+            <a href="https://github.com/mine3krish/zeno/" class="edit-page">
+              <span class="edit-icon">✏️</span>
+              Edit this page
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+  </div>
+  
+  <footer class="docs-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Zeno Docs</h4>
+        <p>Blazing fast blogs for everyone</p>
+        <div class="footer-links">
+          <a href="https://github.com/mine3krish/zeno" class="footer-link">GitHub</a>
+          <a href="https://npmjs.com/package/zeno-blog" class="footer-link">npm</a>
+          <!-- <a href="/changelog.html" class="footer-link">Changelog</a> -->
+        </div>
+      </div>
+      
+      <!-- <div class="footer-section">
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="/examples.html" class="footer-link">Examples</a>
+          <a href="/templates.html" class="footer-link">Templates</a>
+          <a href="/community.html" class="footer-link">Community</a>
+        </div>
+      </div>
+       -->
+
+      <div class="footer-section">
+        <h4>Support</h4>
+        <div class="footer-links">
+          <a href="https://github.com/mine3krish/zeno/issues" class="footer-link">Report Issues</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Built with ❤️ and Zeno.</p>
+    </div>
+  </div>
+</footer>
+  
+  <script>
+    // Generate table of contents
+    document.addEventListener('DOMContentLoaded', function() {
+      addCopyButtons();
+      setupScrollSpy();
+    });
+    
+    function addCopyButtons() {
+      const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+      codeBlocks.forEach(block => {
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.innerHTML = '📋 Copy';
+        button.addEventListener('click', () => {
+          navigator.clipboard.writeText(block.querySelector('code').textContent);
+          button.innerHTML = '✅ Copied!';
+          setTimeout(() => button.innerHTML = '📋 Copy', 2000);
+        });
+        
+        block.style.position = 'relative';
+        block.appendChild(button);
+      });
+    }
+    
+    function setupScrollSpy() {
+      const links = document.querySelectorAll('.toc-link');
+      const sections = Array.from(links).map(link => 
+        document.querySelector(link.getAttribute('href'))
+      ).filter(Boolean);
+      
+      function updateActiveLink() {
+        const scrollTop = window.scrollY + 100;
+        
+        let current = '';
+        sections.forEach(section => {
+          if (section.offsetTop <= scrollTop) {
+            current = section.id;
+          }
+        });
+        
+        links.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink();
+    }
+  </script>
+  <script>
+// Theme toggle
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+// Sidebar toggle
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
+
+// Initialize theme and other functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+  
+  // Setup search functionality
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      
+      if (query.length > 2) {
+        // Mock search results - replace with actual search implementation
+        const mockResults = [
+          { title: 'Getting Started', url: '/getting-started.html' },
+          { title: 'Configuration', url: '/configuration.html' },
+          { title: 'Themes', url: '/themes.html' },
+          { title: 'Plugins', url: '/plugins.html' }
+        ].filter(item => item.title.toLowerCase().includes(query));
+        
+        if (mockResults.length > 0) {
+          searchResults.innerHTML = mockResults.map(result => 
+            `<a href="${result.url}" class="search-result-item">${result.title}</a>`
+          ).join('');
+          searchResults.style.display = 'block';
+        } else {
+          searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
+          searchResults.style.display = 'block';
+        }
+      } else {
+        searchResults.style.display = 'none';
+      }
+    });
+    
+    // Hide search results when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+      }
+    });
+  }
+  
+  // Set active navigation item
+  const currentPath = window.location.pathname;
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    if (item.getAttribute('href') === currentPath) {
+      item.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
