@@ -146,4 +146,4 @@ Zeno is licensed under the MIT License - see [LICENSE](LICENSE)
 <hr>
 
 ## 🔥 Start blogging the easy way with Zeno today!
-<p align="center"> <a href="#">⬆️ Back to Top</a> </p>
+<p align="center"><a href="#-zeno--markdown--blog-framework">⬆️ Back to Top</a></p>
