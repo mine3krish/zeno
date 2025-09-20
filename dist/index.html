@@ -5,37 +5,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Krish's Blog</title>
   <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
-  <a href="/index.html" class="logo">Krish's Blog</a>
-  <ul class="menu">
-    <li><a href="/index.html">Home</a></li>
-    <li><a href="/about.html">About</a></li>
-  </ul>
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/" class="brand-link">Krish's Blog</a>
+    </div>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
 </nav>
-
-
-  <header class="hero">
-    <h1>Krish's Blog</h1>
-    <p>Welcome to my Zeno-powered blog 🚀</p>
-  </header>
-
-  <main id="posts">
-    <article class="post-preview">
-  <h2><a href="/post/hello-zeno/">Hello Zeno</a></h2>
-  <p class="date">2025-09-19</p>
-  <p class="excerpt">This is my first blog post using Zeno!...</p>
+  
+  <main class="home-main">
+    <header class="hero">
+      <div class="hero-content">
+        <h1 class="site-title">Krish's Blog</h1>
+        <p class="site-tagline">Thoughts, ideas, and stories worth sharing</p>
+        <div class="hero-accent"></div>
+      </div>
+    </header>
+    
+    <section class="posts-section" id="posts">
+      <div class="posts-header">
+        <h2>Latest Posts</h2>
+        <div class="posts-count">Exploring ideas, one post at a time</div>
+      </div>
+      <div class="posts-grid">
+        <article class="post-preview">
+  <div class="post-preview-header">
+    <time class="preview-date" datetime="2025-09-19">2025-09-19</time>
+    <span class="preview-category">Blog</span>
+  </div>
+  <h3 class="preview-title">
+    <a href="/post/hello-zeno" class="preview-link">Hello Zeno</a>
+  </h3>
+  <p class="preview-excerpt">This is my first blog post using Zeno!...</p>
+  <div class="preview-footer">
+    <a href="/post/hello-zeno" class="read-more">Read more →</a>
+    <span class="reading-time">5 min read</span>
+  </div>
 </article><article class="post-preview">
-  <h2><a href="/post/what-is-zeno/">What is Zeno?</a></h2>
-  <p class="date">Fri Sep 19 2025 05:30:00 GMT+0530 (India Standard Time)</p>
-  <p class="excerpt">Table of Contents Introduction Why Zeno? Core Features Example Plugins Getting Started Introduction Zeno is a plugin-first Markdown → Blog framework built with JavaScript. It’s designed to make bloggi...</p>
+  <div class="post-preview-header">
+    <time class="preview-date" datetime="Fri Sep 19 2025 05:30:00 GMT+0530 (India Standard Time)">Fri Sep 19 2025 05:30:00 GMT+0530 (India Standard Time)</time>
+    <span class="preview-category">Blog</span>
+  </div>
+  <h3 class="preview-title">
+    <a href="/post/what-is-zeno" class="preview-link">What is Zeno?</a>
+  </h3>
+  <p class="preview-excerpt">Table of Contents Introduction Why Zeno? Core Features Example Plugins Getting Started Introduction Zeno is a plugin-first Markdown → Blog framework built with JavaScript. It’s designed to make bloggi...</p>
+  <div class="preview-footer">
+    <a href="/post/what-is-zeno" class="read-more">Read more →</a>
+    <span class="reading-time">5 min read</span>
+  </div>
 </article>
+      </div>
+    </section>
   </main>
-
-  <footer class="footer">
-  <hr>
-  <p>Powered by Zeno 🚀</p>
+  
+  <footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Krish's Blog</h3>
+        <p>A modern blog built with Zeno</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <a href="https://x.com/ktsfr_" class="footer-link">Twitter</a>
+          <a href="https://github.com/mine3krish" class="footer-link">GitHub</a>
+          <a href="https://linkedin.com/in/ktshacx" class="footer-link">LinkedIn</a>
+        </div>
+        <!-- <div class="footer-column">
+          <h4>More</h4>
+          <a href="#" class="footer-link">RSS Feed</a>
+          <a href="#" class="footer-link">Archive</a>
+          <a href="#" class="footer-link">Newsletter</a>
+        </div> -->
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Krish's Blog. Powered by Zeno 🚀</p>
+    </div>
+  </div>
 </footer>
+  <script>
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+}
+
+// Initialize theme
+document.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+});
+</script>
 </body>
 </html>

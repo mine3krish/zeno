@@ -1,6 +1,6 @@
 {
   "title": "Krish's Blog",
-  "theme": "default",
+  "theme": "clazzy",
   "plugins": [
     { "name": "toc" }
   ]

@@ -5,28 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hello Zeno - Krish's Blog</title>
   <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="{{excerpt}}">
 </head>
-<body>
+<body class="post-page">
   <nav class="navbar">
-  <a href="/index.html" class="logo">Krish's Blog</a>
-  <ul class="menu">
-    <li><a href="/index.html">Home</a></li>
-    <li><a href="/about.html">About</a></li>
-  </ul>
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/" class="brand-link">Krish's Blog</a>
+    </div>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
 </nav>
+  
+  <main class="post-main">
+    <article class="post-article">
+      <header class="post-header">
+        <div class="post-meta">
+          <time class="post-date" datetime="2025-09-19">2025-09-19</time>
+          <span class="post-reading-time">5 min read</span>
+        </div>
+        <h1 class="post-title">Hello Zeno</h1>
+        <div class="post-accent"></div>
+      </header>
+      
+      <div class="post-content">
+        <p>This is my <strong>first blog post</strong> using Zeno!</p>
 
-
-  <article class="post-full">
-    <h1>Hello Zeno</h1>
-    <p class="date">2025-09-19</p>
-    <div class="content"><p>This is my <strong>first blog post</strong> using Zeno!</p>
-</div>
-    <a href="/index.html" class="back-link">← Back to Home</a>
-  </article>
-
-  <footer class="footer">
-  <hr>
-  <p>Powered by Zeno 🚀</p>
+      </div>
+      
+      <footer class="post-footer">
+        <div class="post-tags">
+          <span class="tag">Blog</span>
+          <span class="tag">Writing</span>
+        </div>
+        <div class="post-share">
+          <span>Share this post</span>
+          <button class="share-btn" onclick="copyToClipboard()">Copy Link</button>
+        </div>
+      </footer>
+    </article>
+    
+    <nav class="post-navigation">
+      <a href="/" class="nav-home">← Back to all posts</a>
+    </nav>
+  </main>
+  
+  <footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Krish's Blog</h3>
+        <p>A modern blog built with Zeno</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <a href="https://x.com/ktsfr_" class="footer-link">Twitter</a>
+          <a href="https://github.com/mine3krish" class="footer-link">GitHub</a>
+          <a href="https://linkedin.com/in/ktshacx" class="footer-link">LinkedIn</a>
+        </div>
+        <!-- <div class="footer-column">
+          <h4>More</h4>
+          <a href="#" class="footer-link">RSS Feed</a>
+          <a href="#" class="footer-link">Archive</a>
+          <a href="#" class="footer-link">Newsletter</a>
+        </div> -->
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Krish's Blog. Powered by Zeno 🚀</p>
+    </div>
+  </div>
 </footer>
+  <script>
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+}
+
+// Initialize theme
+document.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+});
+</script>
+  
+  <script>
+    function copyToClipboard() {
+      navigator.clipboard.writeText(window.location.href);
+      const btn = document.querySelector('.share-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy Link', 2000);
+    }
+  </script>
 </body>
 </html>
