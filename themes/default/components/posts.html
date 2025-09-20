@@ -1,5 +1,14 @@
 <article class="post-preview">
-  <h2><a href="/post/{{slug}}/">{{post_title}}</a></h2>
-  <p class="date">{{date}}</p>
-  <p class="excerpt">{{excerpt}}</p>
+  <div class="post-preview-header">
+    <time class="preview-date" datetime="{{date}}">{{date}}</time>
+    <span class="preview-category">Blog</span>
+  </div>
+  <h3 class="preview-title">
+    <a href="{{slug}}" class="preview-link">{{post_title}}</a>
+  </h3>
+  <p class="preview-excerpt">{{excerpt}}</p>
+  <div class="preview-footer">
+    <a href="{{slug}}" class="read-more">Read more →</a>
+    <span class="reading-time">5 min read</span>
+  </div>
 </article>

@@ -23,7 +23,10 @@
         <span class="brand-text">Zeno Docs</span>
       </a>
     </div>
-    
+    <div class="navbar-search">
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <div id="searchResults" class="search-results"></div>
+    </div>
     <div class="navbar-actions">
       <a href="https://github.com/mine3krish/zeno" class="nav-link">
         <span class="link-icon">⭐</span>
@@ -35,6 +38,51 @@
     </div>
   </div>
 </nav>
+
+<script>
+  let postsIndex = [];
+
+async function initSearch() {
+  postsIndex = await fetch('/posts.json').then(r => r.json());
+
+  const input = document.getElementById('searchInput');
+  const resultsBox = document.getElementById('searchResults');
+
+  if (!input || !resultsBox) return;
+
+  input.addEventListener('input', () => {
+    const query = input.value.trim().toLowerCase();
+
+    if (query.length < 2) {
+      resultsBox.style.display = 'none';
+      return;
+    }
+
+    const matches = postsIndex.filter(p =>
+      p.title.toLowerCase().includes(query) ||
+      (p.excerpt && p.excerpt.toLowerCase().includes(query))
+    );
+
+    if (matches.length) {
+      resultsBox.innerHTML = matches.map(p =>
+        `<a href="${p.url}" class="search-result-item">${p.title}</a>`
+      ).join('');
+    } else {
+      resultsBox.innerHTML = `<div class="search-result-item">No results found</div>`;
+    }
+
+    resultsBox.style.display = 'block';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!resultsBox.contains(e.target) && e.target !== input) {
+      resultsBox.style.display = 'none';
+    }
+  });
+}
+
+initSearch();
+</script>
   
   <div class="docs-layout">
     <aside class="docs-sidebar" id="sidebar">

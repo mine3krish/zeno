@@ -23,7 +23,10 @@
         <span class="brand-text">Zeno Docs</span>
       </a>
     </div>
-    
+    <div class="navbar-search">
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <div id="searchResults" class="search-results"></div>
+    </div>
     <div class="navbar-actions">
       <a href="https://github.com/mine3krish/zeno" class="nav-link">
         <span class="link-icon">⭐</span>
@@ -35,6 +38,51 @@
     </div>
   </div>
 </nav>
+
+<script>
+  let postsIndex = [];
+
+async function initSearch() {
+  postsIndex = await fetch('/posts.json').then(r => r.json());
+
+  const input = document.getElementById('searchInput');
+  const resultsBox = document.getElementById('searchResults');
+
+  if (!input || !resultsBox) return;
+
+  input.addEventListener('input', () => {
+    const query = input.value.trim().toLowerCase();
+
+    if (query.length < 2) {
+      resultsBox.style.display = 'none';
+      return;
+    }
+
+    const matches = postsIndex.filter(p =>
+      p.title.toLowerCase().includes(query) ||
+      (p.excerpt && p.excerpt.toLowerCase().includes(query))
+    );
+
+    if (matches.length) {
+      resultsBox.innerHTML = matches.map(p =>
+        `<a href="${p.url}" class="search-result-item">${p.title}</a>`
+      ).join('');
+    } else {
+      resultsBox.innerHTML = `<div class="search-result-item">No results found</div>`;
+    }
+
+    resultsBox.style.display = 'block';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!resultsBox.contains(e.target) && e.target !== input) {
+      resultsBox.style.display = 'none';
+    }
+  });
+}
+
+initSearch();
+</script>
   
   <div class="docs-layout">
     <aside class="docs-sidebar" id="sidebar">
@@ -130,93 +178,7 @@ zeno serve 3000</code></pre>
       
       <section class="docs-grid">
         <h2>Documentation</h2>
-        <div class="docs-cards">
-          <div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/configuration/" class="card-link">Configuration</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Basic Configuration All Options Configuration Reference Common Examples Plugin Configuration Validation Quick Tips Configuration Zeno uses a single zeno.config.json file to configure...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/configuration/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/installation/" class="card-link">Installation</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Prerequisites Quick Install Alternative Methods Platform Setup Troubleshooting Installation Prerequisites Node.js 16+ npm 7+ Check your versions: node --version npm --version Quick I...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/installation/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/introduction-to-zeno/" class="card-link">Introduction to Zeno</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents What is Zeno? Why Choose Zeno? How Zeno Works Core Philosophy What Makes Zeno Different? Quick Example Plugin Example Who Is Zeno For? Getting Started Community &amp; Support What's ...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/introduction-to-zeno/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/markdown/" class="card-link">Markdown</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Basic Post Structure Section Heading Frontmatter Markdown Syntax H2 Heading File Organization Post Examples Installation Your First Post Configuration Methods Content Tips File Proce...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/markdown/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/plugins/" class="card-link">Plugins</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Using Plugins Built-in Plugins Plugin Hooks Creating Plugins Quick Examples Plugin Data Plugin Options Plugin Tips Plugins Plugins extend Zeno's functionality through simple hooks. A...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/plugins/" class="card-arrow">→</a>
-  </div>
-</div><div class="docs-card">
-  <div class="card-header">
-    <div class="card-icon">📚</div>
-    <h3 class="card-title">
-      <a href="/post/themes/" class="card-link">Themes</a>
-    </h3>
-  </div>
-  <p class="card-description">Table of Contents Using Themes Built-in Themes Theme Structure Templates Placeholders Components Creating a Theme Theme Tips Themes Themes control how your blog looks. Simple folder-based system with ...</p>
-  <div class="card-footer">
-    <div class="card-tags">
-      <span class="card-tag">Guide</span>
-    </div>
-    <a href="/post/themes/" class="card-arrow">→</a>
-  </div>
-</div>
-        </div>
+        <div id="posts-container" class="posts-container"></div><div id="pagination"></div>
       </section>
     </main>
   </div>
@@ -340,3 +302,53 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
+<script>
+  const itemsPerPage = 5;
+  let currentPage = 1;
+  let posts = [];
+  const postTemplate = `<div class="docs-card">
+  <div class="card-header">
+    <div class="card-icon">📚</div>
+    <h3 class="card-title">
+      <a href="{{slug}}/" class="card-link">{{post_title}}</a>
+    </h3>
+  </div>
+  <p class="card-description">{{excerpt}}</p>
+  <div class="card-footer">
+    <div class="card-tags">
+      <span class="card-tag">Guide</span>
+    </div>
+    <a href="{{slug}}/" class="card-arrow">→</a>
+  </div>
+</div>`;
+
+  async function loadPosts() {
+    posts = await fetch('posts.json').then(r => r.json());
+    renderPage(currentPage);
+  }
+
+  function renderPage(page) {
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const container = document.getElementById('posts-container');
+
+    container.innerHTML = posts
+      .slice(start, end)
+      .map(p => {
+        let html = postTemplate;
+        html = html.replace(/{{post_title}}/g, p.title)
+                   .replace(/{{date}}/g, p.date || '')
+                   .replace(/{{slug}}/g, p.url)
+                   .replace(/{{excerpt}}/g, p.excerpt || '');
+        return html;
+      }).join('');
+
+    const totalPages = Math.ceil(posts.length / itemsPerPage);
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = Array.from({length: totalPages}, (_, i) =>
+      `<button ${i+1===page?'disabled':''} onclick="renderPage(${i+1})">${i+1}</button>`
+    ).join(' ');
+  }
+
+  loadPosts();
+</script>

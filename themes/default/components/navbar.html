@@ -1,7 +1,62 @@
 <nav class="navbar">
-  <a href="/index.html" class="logo">{{title}}</a>
-  <ul class="menu">
-    <li><a href="/index.html">Home</a></li>
-    <li><a href="/about.html">About</a></li>
-  </ul>
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/" class="brand-link">{{title}}</a>
+    </div>
+    <div class="navbar-search">
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <div id="searchResults" class="search-results"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
 </nav>
+
+<script>
+  let postsIndex = [];
+
+async function initSearch() {
+  postsIndex = await fetch('/posts.json').then(r => r.json());
+
+  const input = document.getElementById('searchInput');
+  const resultsBox = document.getElementById('searchResults');
+
+  if (!input || !resultsBox) return;
+
+  input.addEventListener('input', () => {
+    const query = input.value.trim().toLowerCase();
+
+    if (query.length < 2) {
+      resultsBox.style.display = 'none';
+      return;
+    }
+
+    const matches = postsIndex.filter(p =>
+      p.title.toLowerCase().includes(query) ||
+      (p.excerpt && p.excerpt.toLowerCase().includes(query))
+    );
+
+    if (matches.length) {
+      resultsBox.innerHTML = matches.map(p =>
+        `<a href="${p.url}" class="search-result-item">${p.title}</a>`
+      ).join('');
+    } else {
+      resultsBox.innerHTML = `<div class="search-result-item">No results found</div>`;
+    }
+
+    resultsBox.style.display = 'block';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!resultsBox.contains(e.target) && e.target !== input) {
+      resultsBox.style.display = 'none';
+    }
+  });
+}
+
+initSearch();
+</script>

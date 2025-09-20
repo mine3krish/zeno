@@ -28,7 +28,12 @@ export async function build() {
 
     const md = new MarkdownIt({ html: true });
     const files = fs.existsSync(postsDir) ? fs.readdirSync(postsDir) : [];
-    let postsListHTML = '';
+    const postList = [];
+
+    let postTemplate = fs.readFileSync(path.join(componentsDir, 'posts.html'), 'utf-8');
+    postTemplate = postTemplate
+      .replace(/`/g, '\\`')
+      .replace(/\$\{/g, '\\${');
 
     files.forEach(file => {
         const filePath = path.join(postsDir, file);
@@ -47,21 +52,13 @@ export async function build() {
         }
 
         const html = md.render(processedMarkdown);
+        const excerpt = htmlToText(html).slice(0, 200) + '...';
 
-        let postPreviewTemplate = fs.readFileSync(path.join(componentsDir, 'posts.html'), 'utf-8');
-        postPreviewTemplate = postPreviewTemplate
-          .replace(/{{post_title}}/g, data.title || '')
-          .replace(/{{date}}/g, data.date || '')
-          .replace(/{{excerpt}}/g, htmlToText(html).slice(0, 200) + '...')
-          .replace(/{{slug}}/g, slugify(data.title || ''));
-
-        for (const plugin of plugins) {
-          if (plugin.onRenderHTML) {
-            postPreviewTemplate = plugin.onRenderHTML(postPreviewTemplate, data);
-          }
-        }
-
-        postsListHTML += postPreviewTemplate;
+        postList.push({ 
+          ...data, 
+          url: `/post/${slugify(data.title || '')}/`,
+          excerpt
+        });
 
         let postFullTemplate = fs.readFileSync(path.join(themeDir, 'post.html'), 'utf-8');
         postFullTemplate = replaceComponents(postFullTemplate)
@@ -82,12 +79,61 @@ export async function build() {
         fs.writeFileSync(path.join(postDir, 'index.html'), postFullTemplate);
     });
 
-    let indexTemplate = fs.readFileSync(path.join(themeDir, 'index.html'), 'utf-8');
+    const postListSorted = postList.sort((a, b) => {
+      const dateA = new Date(a.date || '1970-01-01');
+      const dateB = new Date(b.date || '1970-01-01');
+      return dateB.getTime() - dateA.getTime();
+    });
 
-    indexTemplate = indexTemplate.replace(/%posts%/g, postsListHTML);
-    
+    const postsFile = path.join(outputDir, 'posts.json');
+    fs.writeFileSync(postsFile, JSON.stringify(postListSorted, null, 2));
+
+    let indexTemplate = fs.readFileSync(path.join(themeDir, 'index.html'), 'utf-8');
+    indexTemplate = indexTemplate.replace(/%posts%/g, '<div id="posts-container" class="posts-container"></div><div id="pagination"></div>');
     indexTemplate = replaceComponents(indexTemplate)
-      .replace(/{{title}}/g, config.title || 'My Zeno Blog')
+      .replace(/{{title}}/g, config.title || 'My Zeno Blog');
+
+    // Inject JS for dynamic rendering & pagination
+    const postsLoaderScript = `
+<script>
+  const itemsPerPage = 5;
+  let currentPage = 1;
+  let posts = [];
+  const postTemplate = \`${postTemplate}\`;
+
+  async function loadPosts() {
+    posts = await fetch('posts.json').then(r => r.json());
+    renderPage(currentPage);
+  }
+
+  function renderPage(page) {
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const container = document.getElementById('posts-container');
+
+    container.innerHTML = posts
+      .slice(start, end)
+      .map(p => {
+        let html = postTemplate;
+        html = html.replace(/{{post_title}}/g, p.title)
+                   .replace(/{{date}}/g, p.date || '')
+                   .replace(/{{slug}}/g, p.url)
+                   .replace(/{{excerpt}}/g, p.excerpt || '');
+        return html;
+      }).join('');
+
+    const totalPages = Math.ceil(posts.length / itemsPerPage);
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = Array.from({length: totalPages}, (_, i) =>
+      \`<button \${i+1===page?'disabled':''} onclick="renderPage(\${i+1})">\${i+1}</button>\`
+    ).join(' ');
+  }
+
+  loadPosts();
+</script>
+`;
+
+    indexTemplate += postsLoaderScript;
 
     for (const plugin of plugins) {
         if (plugin.onRenderHTML) {
@@ -95,20 +141,20 @@ export async function build() {
         }
     }
 
+    // Copy theme CSS
     fs.copyFileSync(path.join(themeDir, 'style.css'), path.join(outputDir, 'style.css'));
     fs.writeFileSync(path.join(outputDir, 'index.html'), indexTemplate);
 
+    // Run post-build hooks
     for (const plugin of plugins) {
         if (plugin.onPostBuild) {
           plugin.onPostBuild(outputDir);
         }
     }
 
+    // Copy public folder
     if (fs.existsSync(publicDir)) {
-      fs.cpSync(publicDir, publicOutputDir, {
-        overwrite: true,
-        recursive: true
-      });
+      fs.cpSync(publicDir, publicOutputDir, { overwrite: true, recursive: true });
     }
 
     console.log('✅ Blog built successfully');
