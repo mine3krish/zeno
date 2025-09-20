@@ -41,6 +41,13 @@ export function init(projectName = "mysite", options = {}) {
     copyRecursive(srcTheme, destTheme);
   }
 
+  const publicSrc = path.join(__dirname, "../public");
+  const publicDest = path.join(baseDir, "public");
+  
+  if (fs.existsSync(publicSrc)) {
+    copyRecursive(publicSrc, publicDest);
+  }
+
   const config = {
     title: options.title || "My Zeno Blog",
     theme: "default",

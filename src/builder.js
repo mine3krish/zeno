@@ -13,6 +13,8 @@ export async function build() {
     const componentsDir = path.join(themeDir, config.componentsDir || 'components');
     const outputDir = path.join(process.cwd(), config.outputDir || 'dist');
     const postsOutputDir = path.join(outputDir, config.postDir || 'post');
+    const publicDir = path.join(process.cwd(), 'public');
+    const publicOutputDir = path.join(outputDir);
 
     if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
     if (!fs.existsSync(postsOutputDir)) fs.mkdirSync(postsOutputDir, { recursive: true });
@@ -82,7 +84,6 @@ export async function build() {
 
     let indexTemplate = fs.readFileSync(path.join(themeDir, 'index.html'), 'utf-8');
 
-    // BUG: need to push the postsListHTML into index.html first
     indexTemplate = indexTemplate.replace(/%posts%/g, postsListHTML);
     
     indexTemplate = replaceComponents(indexTemplate)
@@ -103,6 +104,12 @@ export async function build() {
         }
     }
 
+    if (fs.existsSync(publicDir)) {
+      fs.cpSync(publicDir, publicOutputDir, {
+        overwrite: true,
+        recursive: true
+      });
+    }
 
     console.log('✅ Blog built successfully');
 }
