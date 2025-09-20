@@ -12,7 +12,7 @@
 - [🤝 Contributing](#-contributing)
 - [📜 License](#-license)
 - [🙌 Acknowledgements](#-acknowledgements)
-
+<hr>
 
 ### ✨ Features
 
@@ -22,3 +22,24 @@
 - ✅ ⚡ Hot Reload for instant previews
 - ✅ 📦 Static Export for deployment (Netlify, Vercel, GitHub Pages)
 - ✅ 🌍 Beginner-friendly open source project
+
+<hr>
+
+### 🚀 Quick start 
+ 🔧 Requirements
+- Node.js v18+
+- npm/yarn/pnpm
+
+⚡ Install & Run
+```bash
+# Create a new blog
+npx zeno init mysite
+cd mysite
+
+# Build the blog
+zeno build
+
+# Start the development server
+zeno serve 3000
+```
+Open 👉 http://localhost:3000
