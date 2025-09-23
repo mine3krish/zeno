@@ -72,7 +72,8 @@ export async function build() {
           .replace(/{{title}}/g, config.title || 'My Zeno Blog')
           .replace(/{{post_title}}/g, data.title || '')
           .replace(/{{date}}/g, data.date || '')
-          .replace(/{{content}}/g, html);
+          .replace(/{{content}}/g, html)
+          .replace(/{{thumbail}}/g, data.thumbnail ? `<img src="${data.thumbnail}" alt="Thumbnail" class="thumbnail"/>` : '')
         postFullTemplate = replaceBaseUrl(postFullTemplate, config);
 
         for (const plugin of plugins) {
@@ -127,6 +128,7 @@ export async function build() {
                    .replace(/{{date}}/g, p.date || '')
                    .replace(/{{slug}}/g, p.url)
                    .replace(/{{excerpt}}/g, p.excerpt || '');
+        html = html.replace(/{{thumbail}}/g, \`<img src="\${p.thumbnail || ''}" alt="Thumbnail" class="thumbnail"/>\` || '');
         return html;
       }).join('');
 
