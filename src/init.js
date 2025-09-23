@@ -51,6 +51,7 @@ export function init(projectName = "mysite", options = {}) {
   const config = {
     title: options.title || "My Zeno Blog",
     theme: "default",
+    baseUrl: options.baseUrl || "/",
     plugins: []
   };
   const configPath = path.join(baseDir, "zeno.config.json");

@@ -478,7 +478,6 @@ export default function analyticsPlugin(options) {
     }
   </script>
   <script>
-// Theme toggle
 function toggleTheme() {
   const currentTheme = document.documentElement.getAttribute('data-theme');
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -492,71 +491,10 @@ function toggleTheme() {
   }
 }
 
-// Sidebar toggle
 function toggleSidebar() {
   const sidebar = document.getElementById('sidebar');
   sidebar.classList.toggle('open');
 }
-
-// Initialize theme and other functionality
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize theme
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  
-  const themeIcon = document.querySelector('.theme-icon');
-  if (themeIcon) {
-    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-  }
-  
-  // Setup search functionality
-  const searchInput = document.getElementById('searchInput');
-  const searchResults = document.getElementById('searchResults');
-  
-  if (searchInput && searchResults) {
-    searchInput.addEventListener('input', function(e) {
-      const query = e.target.value.toLowerCase();
-      
-      if (query.length > 2) {
-        // Mock search results - replace with actual search implementation
-        const mockResults = [
-          { title: 'Getting Started', url: '/getting-started.html' },
-          { title: 'Configuration', url: '/configuration.html' },
-          { title: 'Themes', url: '/themes.html' },
-          { title: 'Plugins', url: '/plugins.html' }
-        ].filter(item => item.title.toLowerCase().includes(query));
-        
-        if (mockResults.length > 0) {
-          searchResults.innerHTML = mockResults.map(result => 
-            `<a href="${result.url}" class="search-result-item">${result.title}</a>`
-          ).join('');
-          searchResults.style.display = 'block';
-        } else {
-          searchResults.innerHTML = '<div class="search-no-results">No results found</div>';
-          searchResults.style.display = 'block';
-        }
-      } else {
-        searchResults.style.display = 'none';
-      }
-    });
-    
-    // Hide search results when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-        searchResults.style.display = 'none';
-      }
-    });
-  }
-  
-  // Set active navigation item
-  const currentPath = window.location.pathname;
-  const navItems = document.querySelectorAll('.nav-item');
-  navItems.forEach(item => {
-    if (item.getAttribute('href') === currentPath) {
-      item.classList.add('active');
-    }
-  });
-});
 </script>
 </body>
 </html>

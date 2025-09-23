@@ -3,14 +3,14 @@
     "title": "Installation",
     "date": "2025-09-19",
     "tags": "installation, setup, getting-started",
-    "url": "/post/installation/",
+    "url": "post/installation",
     "excerpt": "Table of Contents Prerequisites Quick Install Alternative Methods Platform Setup Troubleshooting Installation Prerequisites Node.js 16+ npm 7+ Check your versions: node --version npm --version Quick I..."
   },
   {
     "title": "Introduction to Zeno",
     "date": "2025-09-19",
     "tags": "getting-started, introduction, overview",
-    "url": "/post/introduction-to-zeno/",
+    "url": "post/introduction-to-zeno",
     "excerpt": "Table of Contents What is Zeno? Why Choose Zeno? How Zeno Works Core Philosophy What Makes Zeno Different? Quick Example Plugin Example Who Is Zeno For? Getting Started Community &amp; Support What's ..."
   },
   {
@@ -18,27 +18,27 @@
     "date": "2024-09-19",
     "tags": "configuration, setup, config",
     "excerpt": "Table of Contents Basic Configuration All Options Configuration Reference Common Examples Plugin Configuration Validation Quick Tips Configuration Zeno uses a single zeno.config.json file to configure...",
-    "url": "/post/configuration/"
+    "url": "post/configuration"
   },
   {
     "title": "Markdown",
     "date": "2024-09-19",
     "tags": "markdown, writing, content",
     "excerpt": "Table of Contents Basic Post Structure Section Heading Frontmatter Markdown Syntax H2 Heading File Organization Post Examples Installation Your First Post Configuration Methods Content Tips File Proce...",
-    "url": "/post/markdown/"
+    "url": "post/markdown"
   },
   {
     "title": "Plugins",
     "date": "2024-09-19",
     "tags": "plugins, extensions, hooks",
     "excerpt": "Table of Contents Using Plugins Built-in Plugins Plugin Hooks Creating Plugins Quick Examples Plugin Data Plugin Options Plugin Tips Plugins Plugins extend Zeno's functionality through simple hooks. A...",
-    "url": "/post/plugins/"
+    "url": "post/plugins"
   },
   {
     "title": "Themes",
     "date": "2024-09-19",
     "tags": "themes, design, templates",
-    "url": "/post/themes/",
+    "url": "post/themes",
     "excerpt": "Table of Contents Using Themes Built-in Themes Theme Structure Templates Placeholders Components Creating a Theme Theme Tips Themes Themes control how your blog looks. Simple folder-based system with ..."
   }
 ]

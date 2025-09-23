@@ -1,6 +1,6 @@
 {
   "name": "zeno-blog",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Zeno — Blazing fast blogs for everyone",
   "main": "./bin/zeno.js",
   "bin": {
@@ -43,6 +43,7 @@
   "dependencies": {
     "chalk": "^5.6.2",
     "chokidar": "^4.0.3",
+    "commander": "^14.0.1",
     "express": "^5.1.0",
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0"
