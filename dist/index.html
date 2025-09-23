@@ -278,6 +278,7 @@ function toggleSidebar() {
                    .replace(/{{date}}/g, p.date || '')
                    .replace(/{{slug}}/g, p.url)
                    .replace(/{{excerpt}}/g, p.excerpt || '');
+        html = html.replace(/{{thumbail}}/g, `<img src="${p.thumbnail || ''}" alt="Thumbnail" class="thumbnail"/>` || '');
         return html;
       }).join('');
 
