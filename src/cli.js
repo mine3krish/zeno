@@ -1,60 +1,53 @@
 #!/usr/bin/env node
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { Command } from "commander";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import { build } from "./builder.js";
 import { serve } from "./server.js";
 import { init } from "./init.js";
 import { showHelp } from "./help.js";
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const pkgPath = path.join(__dirname, '../package.json');
-const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+const pkgPath = path.join(__dirname, "../package.json");
+const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf-8"));
 
-const args = process.argv.slice(2);
-const cmd = args[0];
-const arg1 = args[1];
+const program = new Command();
 
-const commands = {
-  init: (folder) => {
-    if (!folder) {
-      console.log("❌ Please provide a folder name for init.");
-      return showHelp();
-    }
+program
+  .name("zeno")
+  .description("⚡ Zeno - Super-fast blogs for everyone")
+  .version(pkg.version);
+
+program
+  .command("init <folder>")
+  .description("Initialize a new Zeno project in the specified folder")
+  .action((folder) => {
     init(folder);
-  },
+  });
 
-  build: async () => {
+program
+  .command("build")
+  .description("Build the blog")
+  .action(async () => {
     await build();
-  },
+  });
 
-  serve: (port) => {
+program
+  .command("serve [port]")
+  .description("Serve the blog locally (default: 3000)")
+  .action((port) => {
     const parsedPort = port ? parseInt(port, 10) : 3000;
     serve(parsedPort);
-  },
+  });
 
-  version: () => {
-    console.log(`Zeno CLI v${pkg.version}`);
-  },
+program
+  .command("help")
+  .description("Show help")
+  .action(() => {
+    showHelp();
+  });
 
-  help: () => showHelp(),
-};
-
-(async () => {
-  if (!cmd || ["--help", "-h"].includes(cmd)) {
-    return commands.help();
-  }
-  if (["--version", "-v"].includes(cmd)) {
-    return commands.version();
-  }
-  const command = commands[cmd];
-  if (command) {
-    await command(arg1);
-  } else {
-    console.log(`❌ Unknown command: ${cmd}`);
-    commands.help();
-  }
-})();
+program.parse(process.argv);

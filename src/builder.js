@@ -26,6 +26,13 @@ export async function build() {
       });
     }
 
+    function replaceBaseUrl(content, config) {
+      const baseUrl = config.baseUrl || "/";
+      const normalized = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+      return content.replace(/{base_url}/g, normalized);
+    }
+
+
     const md = new MarkdownIt({ html: true });
     const files = fs.existsSync(postsDir) ? fs.readdirSync(postsDir) : [];
     const postList = [];
@@ -56,7 +63,7 @@ export async function build() {
 
         postList.push({ 
           ...data, 
-          url: `/post/${slugify(data.title || '')}/`,
+          url: `post/${slugify(data.title || '')}`,
           excerpt
         });
 
@@ -66,6 +73,7 @@ export async function build() {
           .replace(/{{post_title}}/g, data.title || '')
           .replace(/{{date}}/g, data.date || '')
           .replace(/{{content}}/g, html);
+        postFullTemplate = replaceBaseUrl(postFullTemplate, config);
 
         for (const plugin of plugins) {
             if (plugin.onRenderHTML) {
@@ -134,6 +142,7 @@ export async function build() {
 `;
 
     indexTemplate += postsLoaderScript;
+    indexTemplate = replaceBaseUrl(indexTemplate, config);
 
     for (const plugin of plugins) {
         if (plugin.onRenderHTML) {
