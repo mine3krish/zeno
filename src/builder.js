@@ -104,7 +104,7 @@ export async function build() {
     // Inject JS for dynamic rendering & pagination
     const postsLoaderScript = `
 <script>
-  const itemsPerPage = 5;
+  const itemsPerPage = ${config.postsPerPage || 5};
   let currentPage = 1;
   let posts = [];
   const postTemplate = \`${postTemplate}\`;
