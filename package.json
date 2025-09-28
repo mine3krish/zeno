@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "node ./bin/zeno.js serve",
     "build": "node ./bin/zeno.js build",
-    "init": "node ./bin/zeno.js init"
+    "init": "node ./bin/zeno.js init",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [
     "blog",
@@ -47,5 +48,9 @@
     "express": "^5.1.0",
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0"
+  },
+  "devDependencies": {
+    "execa": "^9.6.0",
+    "jest": "^30.2.0"
   }
 }
