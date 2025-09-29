@@ -21,15 +21,15 @@ export function slugify(title) {
   return title
     .toLowerCase()
     .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
+    .replace(/[^\w\-]+/g, '') // Delete non-word characters
+    .replace(/\-\-+/g, '-') // Collapse contiguous hyphens 
+    .replace(/^-+/, '') // Delete hyphens at the beginning
+    .replace(/-+$/, ''); // Delete hyphens at the end
 }
 
 export function htmlToText(html) {
   return html
-    .replace(/<[^>]+>/g, '')
-    .replace(/\s+/g, ' ')
+    .replace(/<[^>]+>/g, '') // Remove tags
+    .replace(/\s+/g, ' ') // Remove extra whitespace
     .trim();
 }

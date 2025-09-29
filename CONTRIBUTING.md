@@ -25,12 +25,13 @@ npm install
 * **Features**: Check the issues labeled `enhancement` or propose your own.
 * **Themes**: Create a new theme in `themes/` folder and make it compatible.
 * **Plugins**: Add plugins in the `plugins/` folder following the plugin hook conventions.
+* **Tests**: Be sure to include unit tests in `*.test.js` modules for your contributions.
 
 ### 4. Test Your Changes
 
 ```bash
-# Build the blog to check changes
-npm run build
+# Run the test suite
+npm run test
 
 # Serve locally
 npm run dev
